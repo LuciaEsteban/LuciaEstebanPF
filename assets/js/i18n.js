@@ -44,7 +44,7 @@ window.TRANSLATIONS = {
       intro: "This is what I am like day to day.",
       items: {
         balance: { title: "Team player", body: "I get on well with people and I like a good atmosphere. Wherever I have worked, I have felt part of the team very soon, and I can also move forward on my own when needed." },
-        organized: { title: "Organized", body: "I like to be organized. I note down deadlines, break the work into smaller tasks and set priorities so that nothing gets forgotten. And when there is no time to be that thorough, I still manage well." },
+        organized: { title: "Organized", body: "I like to be organized. I note down deadlines, break the work into smaller tasks and set priorities so that nothing slips through. And when there is no time to be that thorough, I still manage well." },
         adapt: { title: "Adaptable", body: "Change does not scare me. I quickly get used to new tools, colleagues and ways of working." },
         communication: { title: "Good with people", body: "I am sociable and I enjoy dealing with people. I also have experience working with clients." },
         detail: { title: "Detail-oriented", body: "I like things to be done well, so I review my work carefully before considering it finished." },
@@ -99,7 +99,7 @@ window.TRANSLATIONS = {
       eyebrow: "Next step",
       title: "What I am looking for",
       intro:
-        "I want to move into something different from consultancy, a place where I can contribute what I know and keep learning. I feel most comfortable working remotely or in a hybrid setup, although I am open to other options.",
+        "I want to discover more of the world and broaden my horizons, in a place where I can contribute what I know and keep learning. I feel most comfortable working remotely or in a hybrid setup, although I am open to other options.",
       sectorsTitle: "Fields that especially catch my attention",
       sectors: ["Artificial intelligence", "Data management", "Administration", "Art"],
       open: "Even so, <strong>I am open to any field</strong>. I enjoy discovering new worlds.",
@@ -108,7 +108,7 @@ window.TRANSLATIONS = {
       eyebrow: "Looking ahead",
       title: "AI in my work",
       intro:
-        "I believe AI can be a great tool when you know how to use it and, above all, when to use it. In my work I use it as support for programming and data management, but <strong>I am always the one who decides and reviews the result</strong>. It does not replace what I know or my own judgment, and that is why I keep studying.",
+        "I believe AI can be a great tool when you know how to use it and, above all, when to use it. In my work I use it every day as support for programming and data management, but <strong>I am always the one who decides and reviews the result</strong>. It does not replace what I know or my own judgment, and that is why I keep studying.",
     },
     journey: {
       eyebrow: "Journey",
@@ -226,7 +226,7 @@ window.TRANSLATIONS = {
       intro: "Así soy en el día a día.",
       items: {
         balance: { title: "En equipo", body: "Me llevo bien con la gente y me gusta que haya buen ambiente. En los sitios donde he trabajado me he sentido parte del equipo muy pronto, y también sé avanzar por mi cuenta cuando hace falta." },
-        organized: { title: "Organizada", body: "Me gusta organizarme. Apunto los plazos, divido el trabajo en tareas más pequeñas y marco las prioridades para que no se me quede nada olvidado. Y cuando no hay tiempo para ser tan minuciosa, también sé desenvolverme." },
+        organized: { title: "Organizada", body: "Me gusta organizarme. Apunto los plazos, divido el trabajo en tareas más pequeñas y marco las prioridades para que no se me pase nada. Y cuando no hay tiempo para ser tan minuciosa, también sé desenvolverme." },
         adapt: { title: "Me adapto bien", body: "Los cambios no me asustan. Me acostumbro pronto a nuevas herramientas, compañeros y formas de trabajar." },
         communication: { title: "Trato con las personas", body: "Soy sociable y disfruto del trato con la gente. Además, tengo experiencia tratando con clientes." },
         detail: { title: "Detallista", body: "Me gusta que las cosas queden bien hechas, así que reviso mi trabajo con cuidado antes de darlo por terminado." },
@@ -281,7 +281,7 @@ window.TRANSLATIONS = {
       eyebrow: "El siguiente paso",
       title: "Qué busco",
       intro:
-        "Quiero dar el paso a algo distinto de la consultoría, un lugar donde aportar lo que sé y seguir aprendiendo. Me siento más cómoda en remoto o en híbrido, aunque estoy abierta a valorar otras opciones.",
+        "Quiero descubrir más mundo y ampliarme, en un lugar donde aportar lo que sé y seguir aprendiendo. Me siento más cómoda en remoto o en híbrido, aunque estoy abierta a valorar otras opciones.",
       sectorsTitle: "Ámbitos que me llaman especialmente la atención",
       sectors: ["Inteligencia artificial", "Manejo de datos", "Administración", "Arte"],
       open: "Aun así, <strong>estoy abierta a cualquier ámbito</strong>. Me gusta descubrir mundos nuevos.",
@@ -290,7 +290,7 @@ window.TRANSLATIONS = {
       eyebrow: "Mirando al futuro",
       title: "La IA en mi trabajo",
       intro:
-        "Creo que la IA puede ser una gran herramienta si se sabe usar y, sobre todo, si se sabe cuándo usarla. En mi trabajo la utilizo como apoyo en la programación y en la gestión de datos, pero <strong>siempre soy yo quien decide y revisa el resultado</strong>. No sustituye lo que sé ni mi propio criterio, y por eso sigo formándome.",
+        "Creo que la IA puede ser una gran herramienta si se sabe usar y, sobre todo, si se sabe cuándo usarla. En mi trabajo la utilizo todos los días como apoyo en la programación y en la gestión de datos, pero <strong>siempre soy yo quien decide y revisa el resultado</strong>. No sustituye lo que sé ni mi propio criterio, y por eso sigo formándome.",
     },
     journey: {
       eyebrow: "Trayectoria",
