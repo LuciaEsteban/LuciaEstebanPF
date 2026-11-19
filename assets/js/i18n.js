@@ -55,7 +55,7 @@ window.TRANSLATIONS = {
       title: "What I can do",
       introBeforeDuration: "I have been working as a Microsoft Dynamics 365 Business Central developer for ",
       introAfterDuration:
-        ", on an ERP: the software a company uses to run its internal operations in one place, from sales and purchasing to invoicing, projects, staff and accounting. That is why I understand how a company works from the inside and how its areas connect. Right now my work is programming, but that does not limit what I can do.",
+        ", on an ERP: the software a company uses to run its internal operations in one place, from sales and purchasing to invoicing, projects, staff and accounting. Working with it has given me a solid foundation in how a company operates and how its areas connect, and I would be glad to build on it and specialise further if a role requires it. Right now my work is programming, but that does not limit what I can do.",
       work: {
         title: "Some of the things I have done",
         items: [
@@ -236,7 +236,7 @@ window.TRANSLATIONS = {
       title: "Qué sé hacer",
       introBeforeDuration: "Llevo ",
       introAfterDuration:
-        " trabajando como desarrolladora de Microsoft Dynamics 365 Business Central, un ERP: el programa con el que una empresa gestiona su funcionamiento interno en un solo sitio, desde las ventas y las compras hasta la facturación, los proyectos, el personal y la contabilidad. Por eso conozco cómo se mueve una empresa por dentro y cómo se conectan sus áreas. Ahora mismo mi trabajo es la programación, pero eso no limita lo que puedo hacer.",
+        " trabajando como desarrolladora de Microsoft Dynamics 365 Business Central, un ERP: el programa con el que una empresa gestiona su funcionamiento interno en un solo sitio, desde las ventas y las compras hasta la facturación, los proyectos, el personal y la contabilidad. Trabajar con él me ha dado una base sólida sobre cómo funciona una empresa y cómo se conectan sus áreas, y me gustaría seguir aprendiendo y especializarme si el puesto lo requiere. Ahora mismo mi trabajo es la programación, pero eso no limita lo que puedo hacer.",
       work: {
         title: "Algunas cosas que he hecho",
         items: [
