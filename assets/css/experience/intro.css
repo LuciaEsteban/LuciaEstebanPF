@@ -230,7 +230,9 @@ body > .site-footer {
 }
 .intro-avatar {
   width: 30%;
+  height: auto; /* the HTML height="120" would otherwise stretch the circle into an oval */
   aspect-ratio: 1 / 1;
+  flex: none;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid rgba(255,255,255,0.7);
