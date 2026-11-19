@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="meta.title">Lucía Esteban PCP</title>
+  <meta name="description" content="Cover letter of Lucía Esteban Peña, software developer." data-i18n-attr="content:meta.description" />
+  <meta name="theme-color" content="#0b2545" />
+  <!-- Not listed in search engines: this page is shared by direct link only. Remove this line to make it searchable. -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Open Graph (placeholders: update once real assets/URLs exist) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Lucía Esteban PCP" data-i18n-attr="content:meta.title" />
+  <meta property="og:description" content="Cover letter of Lucía Esteban Peña, software developer." data-i18n-attr="content:meta.description" />
+  <meta property="og:image" content="assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+  <link rel="canonical" href="https://luciaesteban.github.io/Proyecto-2/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=202611161415" />
+  <link rel="stylesheet" href="assets/css/experience/intro.css?v=202611161415" />
+  <link rel="stylesheet" href="assets/css/experience/controls.css?v=202611161415" />
+  <link rel="stylesheet" href="assets/css/experience/voice.css?v=202611161415" />
+  <link rel="stylesheet" href="assets/css/experience/contact.css?v=202611161415" />
+  <link rel="stylesheet" href="assets/css/experience/page.css?v=202611161415" />
+
+  <!-- Sets the theme before the first paint, so the page never flashes
+       in the wrong colours. The toggle logic itself lives in main.js. -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("lucia-portfolio-theme");
+        var theme = saved === "light" || saved === "dark"
+          ? saved
+          : "dark"; // first visit: always dark, whatever the OS setting
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        // Storage blocked (private browsing, strict settings): the dark default on <html> stays.
+      }
+    })();
+  </script>
+  <!-- Intro screen: blurs the page until the bubble is popped. -->
+  <script>document.documentElement.classList.add("intro-open");</script>
+  <noscript><style>.intro{display:none!important}html.intro-open{overflow:auto!important}html.intro-open body>*{filter:none!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <!-- INTRO — a bubble emerges from the blur over faint falling AL code;
+       popping it plays a sound and opens the site. Texts are filled in by
+       assets/js/experience/intro.js in the visitor's language. -->
+  <div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="introName">
+    <span class="intro-orb" aria-hidden="true"></span>
+    <span class="intro-orb" aria-hidden="true"></span>
+    <span class="intro-orb" aria-hidden="true"></span>
+    <span class="intro-orb" aria-hidden="true"></span>
+    <div class="intro-stage">
+      <button type="button" class="intro-bubble">
+        <span class="intro-content">
+          <img class="intro-avatar" src="assets/img/profile-image.jpg" alt="" width="120" height="120" />
+          <span class="intro-eyebrow" data-intro-text="eyebrow">Cover letter</span>
+          <span class="intro-name" id="introName">Lucía Esteban Peña</span>
+          <span class="intro-role" data-intro-text="role">Software developer</span>
+          <span class="intro-cta"><span aria-hidden="true">✦</span> <span data-intro-text="cta">Tap the bubble</span></span>
+        </span>
+      </button>
+      <div class="intro-options">
+        <button type="button" data-intro-music aria-pressed="true">♪ Music: on</button>
+      </div>
+    </div>
+    <p class="intro-hint" data-intro-text="hint">Press Enter to come in</p>
+  </div>
+  <a class="skip-link" href="#main" data-i18n="skipLink">Skip to main content</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Lucía Esteban, home">
+        <span class="logo-mark" aria-hidden="true">LE</span>
+        <span class="logo-text">Lucía Esteban</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+
+      <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+        <ul>
+          <li><a href="#expertise" data-i18n="nav.expertise">About me</a></li>
+          <li><a href="#ecosystem" data-i18n="nav.ecosystem">What I can do</a></li>
+          <li><a href="#horizons" data-i18n="nav.horizons">What I am looking for</a></li>
+          <li><a href="#ai" data-i18n="nav.ai">AI</a></li>
+          <li><a href="#journey" data-i18n="nav.journey">Journey</a></li>
+          <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+          <span class="lang-divider" aria-hidden="true">|</span>
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">ES</button>
+        </div>
+
+        <!-- Starts in dark mode; a click stores the choice in localStorage
+             so it sticks on the next visit. -->
+        <button type="button" id="themeToggle" class="theme-toggle" aria-pressed="false" data-i18n-attr="aria-label:nav.themeToggleLabel" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 2.5v2.5M12 19v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12H5M19 12h2.5M4.2 19.8L6 18M18 6l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <!-- Purely decorative floating color field, same treatment used
+           further down the page — keeps the hero from reading as a
+           flat gradient with text on top of it. -->
+      <div class="bubble-field bubble-field-hero" aria-hidden="true">
+        <span class="bubble bubble-a"></span>
+        <span class="bubble bubble-b"></span>
+        <span class="bubble bubble-c"></span>
+        <span class="bubble bubble-d"></span>
+      </div>
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Cover letter</p>
+          <h1 id="hero-heading" data-i18n="hero.name">Lucía Esteban Peña</h1>
+          <p class="hero-role" data-i18n="hero.role">Software developer</p>
+          <p class="hero-tagline" data-i18n="hero.tagline"></p>
+          <div class="hero-badges" aria-hidden="false">
+            <span class="hero-badge" data-i18n="hero.badgeLanguages">English &amp; Spanish</span>
+          </div>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#expertise" data-i18n="hero.ctaPrimary">Get to know me</a>
+            <a class="btn btn-secondary" href="#contact" data-i18n="hero.ctaSecondary">Let's talk</a>
+          </div>
+        </div>
+        <div class="hero-photo reveal" aria-hidden="false">
+          <div class="hero-photo-frame">
+            <!-- Decorative only — a generic list/record-view mockup, not
+                 a real screenshot of any product or client system, just
+                 a visual nod to the kind of interface this work lives in. -->
+            <svg class="hero-mockup-card" viewBox="0 0 220 150" aria-hidden="true" focusable="false">
+              <rect x="2" y="2" width="216" height="26" rx="12" fill="var(--color-primary)" />
+              <rect x="2" y="14" width="216" height="134" rx="12" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1.5" />
+              <circle cx="14" cy="15" r="3" fill="#ffffff" opacity="0.9" />
+              <circle cx="24" cy="15" r="3" fill="#ffffff" opacity="0.6" />
+              <circle cx="34" cy="15" r="3" fill="#ffffff" opacity="0.35" />
+              <rect x="2" y="26" width="36" height="110" fill="var(--color-bg-alt)" />
+              <rect x="10" y="40" width="20" height="6" rx="3" fill="var(--color-accent)" />
+              <rect x="10" y="60" width="20" height="6" rx="3" fill="var(--color-border)" />
+              <rect x="10" y="80" width="20" height="6" rx="3" fill="var(--color-border)" />
+              <rect x="10" y="100" width="20" height="6" rx="3" fill="var(--color-border)" />
+              <rect x="46" y="34" width="164" height="10" rx="2" fill="var(--color-bg-alt)" />
+              <circle cx="52" cy="56" r="3" fill="var(--color-accent)" />
+              <rect x="60" y="52" width="150" height="8" rx="2" fill="var(--color-accent-soft)" />
+              <rect x="46" y="68" width="150" height="8" rx="2" fill="var(--color-border)" opacity="0.6" />
+              <rect x="46" y="84" width="130" height="8" rx="2" fill="var(--color-border)" opacity="0.6" />
+              <rect x="46" y="100" width="140" height="8" rx="2" fill="var(--color-border)" opacity="0.6" />
+              <rect x="150" y="118" width="6" height="10" fill="var(--color-primary-soft)" />
+              <rect x="160" y="112" width="6" height="16" fill="var(--color-accent)" />
+              <rect x="170" y="108" width="6" height="20" fill="var(--color-primary-soft)" />
+              <rect x="180" y="116" width="6" height="12" fill="var(--color-accent)" />
+            </svg>
+            <img src="assets/img/profile-image.jpg" alt="" data-i18n-attr="alt:hero.photoAlt" width="360" height="360" />
+          </div>
+        </div>
+      </div>
+      <a class="scroll-hint" href="#expertise" data-i18n="hero.scrollHint">
+        <span>Scroll to explore</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v14m0 0l-6-6m6 6l6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </section>
+
+    <!-- HOW I WORK: short qualities, one line each -->
+    <section class="section section-expertise" id="expertise" aria-labelledby="expertise-heading">
+      <div class="bubble-field" aria-hidden="true"><span class="bubble bubble-a"></span><span class="bubble bubble-b"></span><span class="bubble bubble-c"></span></div>
+      <div class="container">
+        <p class="eyebrow reveal" data-i18n="expertise.eyebrow"></p>
+        <h2 id="expertise-heading" class="reveal" data-i18n="expertise.title"></h2>
+        <p class="section-intro reveal" data-i18n="expertise.intro"></p>
+        <div class="expertise-grid">
+          <article class="expertise-card reveal">
+            <div class="expertise-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="15" r="5.5" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="2"/><path d="M14 38v-3a10 10 0 0120 0v3" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="19" r="4" stroke="currentColor" stroke-width="2"/><path d="M4 36v-1.5A7.5 7.5 0 0113.5 27" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="37" cy="19" r="4" stroke="currentColor" stroke-width="2"/><path d="M44 36v-1.5A7.5 7.5 0 0034.5 27" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3 data-i18n="expertise.items.balance.title"></h3>
+            <p data-i18n="expertise.items.balance.body"></p>
+          </article>
+          <article class="expertise-card reveal">
+            <div class="expertise-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="7" width="32" height="35" rx="5" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="2"/><path d="M14 16l2.5 2.5L21 14M14 26l2.5 2.5L21 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 16.5h9M25 26.5h9M15 35h4M25 35h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3 data-i18n="expertise.items.organized.title"></h3>
+            <p data-i18n="expertise.items.organized.body"></p>
+          </article>
+          <article class="expertise-card reveal">
+            <div class="expertise-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="17" fill="currentColor" fill-opacity="0.12"/><path d="M10 24a14 14 0 0124-9.5M38 24a14 14 0 01-24 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M34 10v6h-6M14 38v-6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 data-i18n="expertise.items.adapt.title"></h3>
+            <p data-i18n="expertise.items.adapt.body"></p>
+          </article>
+          <article class="expertise-card reveal">
+            <div class="expertise-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none"><path d="M7 11a4 4 0 014-4h18a4 4 0 014 4v10a4 4 0 01-4 4H17l-6 5v-5a4 4 0 01-4-4z" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M33 17h4a4 4 0 014 4v9a4 4 0 01-4 4v5l-6-5h-8a4 4 0 01-4-4v-1" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 16h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3 data-i18n="expertise.items.communication.title"></h3>
+            <p data-i18n="expertise.items.communication.body"></p>
+          </article>
+          <article class="expertise-card reveal">
+            <div class="expertise-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none"><circle cx="21" cy="21" r="12" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="2"/><path d="M30 30l10 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M16 21l3.5 3.5L26 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 data-i18n="expertise.items.detail.title"></h3>
+            <p data-i18n="expertise.items.detail.body"></p>
+          </article>
+          <article class="expertise-card reveal">
+            <div class="expertise-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none"><path d="M24 13c-4-3-10-4-17-3v26c7-1 13 0 17 3 4-3 10-4 17-3V10c-7-1-13 0-17 3z" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M24 13v26" stroke="currentColor" stroke-width="2"/><path d="M12 17c3-.3 6 .2 8 1.2M12 23c3-.3 6 .2 8 1.2M28 18.2c2-1 5-1.5 8-1.2M28 24.2c2-1 5-1.5 8-1.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <h3 data-i18n="expertise.items.learn.title"></h3>
+            <p data-i18n="expertise.items.learn.body"></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT I CAN DO: current job in one sentence + skills -->
+    <section class="section section-alt" id="ecosystem" aria-labelledby="ecosystem-heading">
+      <div class="container">
+        <p class="eyebrow reveal" data-i18n="ecosystem.eyebrow"></p>
+        <h2 id="ecosystem-heading" class="reveal" data-i18n="ecosystem.title"></h2>
+        <p class="section-intro reveal"><span data-i18n="ecosystem.introBeforeDuration"></span><strong id="expertiseDuration"></strong><span data-i18n="ecosystem.introAfterDuration"></span></p>
+        <div class="ecosystem-rings reveal">
+          <div class="ring-group ring-core">
+            <h3 data-i18n="ecosystem.work.title"></h3>
+            <ul class="chip-list">
+              <li class="chip chip-core" data-i18n="ecosystem.work.items.0"></li>
+              <li class="chip chip-core" data-i18n="ecosystem.work.items.1"></li>
+              <li class="chip chip-core" data-i18n="ecosystem.work.items.2"></li>
+              <li class="chip chip-core" data-i18n="ecosystem.work.items.3"></li>
+              <li class="chip chip-core" data-i18n="ecosystem.work.items.4"></li>
+              <li class="chip chip-core" data-i18n="ecosystem.work.items.5"></li>
+              <li class="chip chip-core" data-i18n="ecosystem.work.items.6"></li>
+            </ul>
+          </div>
+          <div class="ring-group ring-core">
+            <h3 data-i18n="ecosystem.core.title"></h3>
+            <ul class="chip-list">
+              <li class="chip chip-core" data-i18n="ecosystem.core.items.0"></li>
+              <li class="chip chip-core" data-i18n="ecosystem.core.items.1"></li>
+              <li class="chip chip-core" data-i18n="ecosystem.core.items.2"></li>
+              <li class="chip chip-core" data-i18n="ecosystem.core.items.3"></li>
+              <li class="chip chip-core" data-i18n="ecosystem.core.items.4"></li>
+              <li class="chip chip-core" data-i18n="ecosystem.core.items.5"></li>
+              <li class="chip chip-core" data-i18n="ecosystem.core.items.6"></li>
+            </ul>
+          </div>
+          <div class="ring-group ring-professional">
+            <h3 data-i18n="ecosystem.professional.title"></h3>
+            <ul class="chip-list">
+              <li class="chip chip-professional" data-i18n="ecosystem.professional.items.0"></li>
+              <li class="chip chip-professional" data-i18n="ecosystem.professional.items.1"></li>
+              <li class="chip chip-professional" data-i18n="ecosystem.professional.items.2"></li>
+            </ul>
+          </div>
+          <div class="ring-group ring-additional">
+            <h3 data-i18n="ecosystem.languages.title"></h3>
+            <ul class="chip-list">
+              <li class="chip chip-professional" data-i18n="ecosystem.languages.items.0"></li>
+              <li class="chip chip-professional" data-i18n="ecosystem.languages.items.1"></li>
+            </ul>
+            <p class="timeline-meta" style="margin-top:1rem" data-i18n="ecosystem.languages.note"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT I AM LOOKING FOR -->
+    <section class="section section-ai" id="horizons" aria-labelledby="horizons-heading">
+      <div class="bubble-field" aria-hidden="true"><span class="bubble bubble-a"></span><span class="bubble bubble-c"></span></div>
+      <div class="container">
+        <p class="eyebrow reveal" data-i18n="horizons.eyebrow"></p>
+        <h2 id="horizons-heading" class="reveal" data-i18n="horizons.title"></h2>
+        <p class="section-intro reveal" data-i18n="horizons.intro"></p>
+        <div class="ecosystem-rings reveal">
+          <div class="ring-group ring-core">
+            <h3 data-i18n="horizons.sectorsTitle"></h3>
+            <ul class="chip-list">
+              <li class="chip chip-core" data-i18n="horizons.sectors.0"></li>
+              <li class="chip chip-core" data-i18n="horizons.sectors.1"></li>
+              <li class="chip chip-core" data-i18n="horizons.sectors.2"></li>
+              <li class="chip chip-core" data-i18n="horizons.sectors.3"></li>
+            </ul>
+          </div>
+        </div>
+        <p class="section-intro reveal" style="margin-top:2.5rem" data-i18n="horizons.open"></p>
+      </div>
+    </section>
+
+    <!-- AI: how Lucía uses AI (a tool under human control) -->
+    <section class="section" id="ai" aria-labelledby="ai-heading">
+      <div class="bubble-field" aria-hidden="true"><span class="bubble bubble-a"></span><span class="bubble bubble-b"></span></div>
+      <div class="container">
+        <p class="eyebrow reveal" data-i18n="ai.eyebrow"></p>
+        <h2 id="ai-heading" class="reveal" data-i18n="ai.title"></h2>
+        <p class="section-intro reveal" data-i18n="ai.intro"></p>
+      </div>
+    </section>
+
+    <!-- JOURNEY (professional experience + education, combined — one job
+         entry didn't earn a whole section to itself, and the two threads
+         genuinely run side by side anyway) -->
+    <section class="section section-alt" id="journey" aria-labelledby="journey-heading">
+      <div class="bubble-field" aria-hidden="true"><span class="bubble bubble-a"></span><span class="bubble bubble-b"></span><span class="bubble bubble-c"></span></div>
+      <div class="container">
+        <p class="eyebrow reveal" data-i18n="journey.eyebrow">Background</p>
+        <h2 id="journey-heading" class="reveal" data-i18n="journey.title">Experience &amp; education</h2>
+        <p class="section-intro reveal" data-i18n="journey.intro">My professional path and the education that has accompanied it.</p>
+
+        <ol class="timeline reveal">
+          <li class="timeline-item timeline-item-professional">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-tag timeline-tag-professional" data-i18n="journey.items.professional.tag">Professional</span>
+              <p class="timeline-date" id="timelineStartLabel">Since 2025</p>
+              <h3 data-i18n="journey.items.professional.role"></h3>
+              <p id="timelineCompany" data-i18n="journey.items.professional.companyFallback"></p>
+              <p class="timeline-meta" data-i18n="journey.items.professional.versions"></p>
+            </div>
+          </li>
+
+          <li class="timeline-item timeline-item-education">
+            <div class="timeline-dot timeline-dot-pulse" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-tag timeline-tag-education" data-i18n="journey.items.unir.tag">Education (in progress)</span>
+              <h3 data-i18n="journey.items.unir.title">Computer Engineering, UNIR</h3>
+              <p data-i18n="journey.items.unir.body"></p>
+            </div>
+          </li>
+
+          <li class="timeline-item timeline-item-education">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-tag timeline-tag-education" data-i18n="journey.items.dam.tag">Education</span>
+              <h3 data-i18n="journey.items.dam.title">Higher Technician in Multiplatform Application Development (DAM)</h3>
+              <p class="timeline-meta" data-i18n="journey.items.dam.meta">Completed</p>
+              <p data-i18n="journey.items.dam.body">Higher vocational qualification in software development.</p>
+            </div>
+          </li>
+
+          <li class="timeline-item timeline-item-education">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-tag timeline-tag-education" data-i18n="journey.items.electronics.tag">Education</span>
+              <h3 data-i18n="journey.items.electronics.title">Electronics and Industrial Automation Engineering</h3>
+              <p class="timeline-meta" data-i18n="journey.items.electronics.meta">2 years completed, Universidad Politécnica de Alcalá</p>
+              <p data-i18n="journey.items.electronics.body">This is where I moved into software development, a path I continued with the DAM qualification and further technical training.</p>
+            </div>
+          </li>
+
+          <li class="timeline-item timeline-item-education">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-tag timeline-tag-education" data-i18n="journey.items.hospitality.tag"></span>
+              <h3 data-i18n="journey.items.hospitality.title"></h3>
+              <p data-i18n="journey.items.hospitality.body"></p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- BEYOND WORK -->
+    <section class="section section-beyond" aria-labelledby="beyond-heading">
+      <div class="bubble-field" aria-hidden="true"><span class="bubble bubble-a"></span><span class="bubble bubble-b"></span></div>
+      <div class="container beyond-inner reveal">
+        <div class="beyond-photo">
+          <!-- Photo: Ansgar Scheffold on Unsplash (Unsplash License, free to use): https://unsplash.com/photos/z_f2JrBRbOg -->
+          <img src="https://images.unsplash.com/photo-1603979649806-5299879db16b?w=320&amp;h=320&amp;fit=crop&amp;crop=center&amp;q=80&amp;fm=jpg" srcset="https://images.unsplash.com/photo-1603979649806-5299879db16b?w=320&amp;h=320&amp;fit=crop&amp;crop=center&amp;q=80&amp;fm=jpg 1x, https://images.unsplash.com/photo-1603979649806-5299879db16b?w=480&amp;h=480&amp;fit=crop&amp;crop=center&amp;q=80&amp;fm=jpg 2x" alt="Mountain lake at sunset" data-i18n-attr="alt:beyond.photoAlt" width="160" height="160" loading="lazy" />
+        </div>
+        <div class="beyond-copy">
+          <p class="eyebrow" data-i18n="beyond.eyebrow">Beyond work</p>
+          <h2 id="beyond-heading" data-i18n="beyond.title">Beyond work</h2>
+          <p data-i18n="beyond.body"></p>
+          <p data-i18n="beyond.body2" style="margin-top:0.8rem"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section-contact" id="contact" aria-labelledby="contact-heading">
+      <div class="bubble-field bubble-field-dark" aria-hidden="true"><span class="bubble bubble-a"></span><span class="bubble bubble-b"></span><span class="bubble bubble-c"></span></div>
+      <div class="container contact-inner contact-grid">
+        <div class="contact-copy reveal">
+          <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
+          <h2 id="contact-heading" data-i18n="contact.title">Let's talk</h2>
+          <p class="contact-intro" data-i18n="contact.intro"></p>
+
+          <div class="contact-links">
+            <a id="contactEmail" class="contact-link" href="#" data-i18n="contact.email">Email</a>
+            <a id="contactLinkedIn" class="contact-link" href="#" target="_blank" rel="noopener" data-i18n="contact.linkedin">LinkedIn</a>
+            <a id="contactGithub" class="contact-link" href="#" target="_blank" rel="noopener" data-i18n="contact.github">GitHub</a>
+            <a id="contactCv" class="contact-link" href="#" data-i18n="contact.cv">Download CV</a>
+          </div>
+        </div>
+
+        <!-- Contact form. Sends through SITE_CONFIG.contactFormEndpoint
+             (FormSubmit) when one is set; otherwise it opens the
+             visitor's email app with the message already written. -->
+        <form class="contact-form reveal" id="contactForm" novalidate aria-labelledby="contactFormTitle">
+          <h3 id="contactFormTitle" data-i18n="contact.form.title">Send me a message</h3>
+          <div class="form-row">
+            <label for="cfName" data-i18n="contact.form.name">Name</label>
+            <input id="cfName" name="name" type="text" autocomplete="name" required maxlength="100" />
+          </div>
+          <div class="form-row">
+            <label for="cfEmail" data-i18n="contact.form.email">Email</label>
+            <input id="cfEmail" name="email" type="email" autocomplete="email" required maxlength="150" />
+          </div>
+          <div class="form-row">
+            <label for="cfCompany" data-i18n="contact.form.company">Company (optional)</label>
+            <input id="cfCompany" name="company" type="text" autocomplete="organization" maxlength="100" />
+          </div>
+          <div class="form-row">
+            <label for="cfMessage" data-i18n="contact.form.message">Message</label>
+            <textarea id="cfMessage" name="message" rows="5" required maxlength="3000"></textarea>
+          </div>
+          <!-- Honeypot: invisible to people, bots tend to fill it in -->
+          <input class="form-hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <button type="submit" class="btn contact-submit">
+            <span data-i18n="contact.form.send">Send message</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="form-status" id="contactFormStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="#top" class="back-to-top" data-i18n="contact.backToTop">Back to top</a>
+      <p><span data-i18n="footer.builtWith">Designed and developed by Lucía Esteban.</span> <span id="footerYear"></span> <span data-i18n="footer.rights">All rights reserved.</span></p>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js?v=202611161415"></script>
+  <script src="assets/js/i18n.js?v=202611161415"></script>
+  <script src="assets/js/main.js?v=202611161415"></script>
+  <!-- Experience layer (intro, sound, voice, seasons…); see assets/js/experience/core.js -->
+  <script src="assets/js/experience/core.js?v=202611161415"></script>
+  <script src="assets/js/experience/sound.js?v=202611161415"></script>
+  <script src="assets/js/experience/visuals.js?v=202611161415"></script>
+  <script src="assets/js/experience/controls.js?v=202611161415"></script>
+  <script src="assets/js/experience/intro.js?v=202611161415"></script>
+  <script src="assets/js/experience/voice.js?v=202611161415"></script>
+  <script src="assets/js/experience/page.js?v=202611161415"></script>
+</body>
+</html>

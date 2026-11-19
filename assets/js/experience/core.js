@@ -1,0 +1,135 @@
+/**
+ * Experience layer: shared core.
+ *
+ * The "experience" scripts add the intro screen, sound, music, voice
+ * message, seasonal background and small interactions on top of the
+ * base site (main.js). They share one namespace, window.XP, and are
+ * loaded in this order from index.html:
+ *
+ *   core.js      namespace, copy (EN/ES), helpers
+ *   sound.js     sound effects, background music, voice clips
+ *   visuals.js   ripple effect, seasonal background
+ *   controls.js  floating music player + seasonal animation switch
+ *   intro.js     bubble intro screen
+ *   voice.js     "Listen to me" speech bubble + synced captions
+ *   page.js      page interactions, contact form, start-up
+ */
+(function () {
+  "use strict";
+
+  var XP = (window.XP = window.XP || {});
+
+  XP.reduceMotion = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  XP.finePointer = !!(window.matchMedia && matchMedia("(pointer: fine)").matches);
+
+  /* ------------------------------------------------------------------ */
+  /* Copy used by the experience layer (the page copy lives in i18n.js) */
+  /* ------------------------------------------------------------------ */
+  XP.TEXT = {
+    en: {
+      // Intro
+      eyebrow: "Cover letter",
+      role: "Software developer",
+      cta: "Tap the bubble to enter",
+      hint: "Or press Enter to continue",
+      bubbleLabel: "Enter the cover letter",
+      langTip: "You can change the language here",
+      welcomeText: "Welcome to my cover letter. If you would like to get to know me a little better, tap the bubble on the screen. You can also change the language in the top right corner.",
+      // Music + seasonal animation controls
+      musicOn: "♪ Music: on",
+      musicOff: "♪ Music: off",
+      play: "Play background music",
+      pause: "Pause background music",
+      volume: "Music volume",
+      animOn: "Animation: on",
+      animOff: "Animation: off",
+      animLabelOn: "Turn off the seasonal background animation",
+      animLabelOff: "Turn on the seasonal background animation",
+      // Voice message
+      listen: "Listen to me",
+      listenLabel: "Play a short spoken welcome message (about 20 seconds)",
+      speaker: "Lucía",
+      nowPlaying: "Voice message",
+      // Captions, timed to the pauses in the recording: [start s, end s, words]
+      openingCues: [
+        [0.21, 2.33, "Hello, and welcome to my portfolio."],
+        [2.71, 5.77, "I'm Lucía Esteban, a Business Central developer."],
+        [6.29, 8.45, "Here you'll discover what I work on,"],
+        [8.74, 10.59, "how I approach each project,"],
+        [10.73, 11.78, "my background,"],
+        [11.98, 14.48, "and a little about who I am beyond the code."],
+        [15.13, 16.41, "Thank you for stopping by."],
+        [16.68, 20.53, "If you think I could be a good fit for your team, I'd be glad to talk."]
+      ],
+      // Guided tour while the message plays: [start s, element to show]
+      openingTour: [
+        [6.29, "#expertise"],
+        [8.74, "#ecosystem"],
+        [10.73, "#journey"],
+        [11.98, ".section-beyond"],
+        [16.68, "#contact"]
+      ]
+    },
+    es: {
+      eyebrow: "Carta de presentación",
+      role: "Programadora",
+      cta: "Toca la burbuja para entrar",
+      hint: "O pulsa Enter para continuar",
+      bubbleLabel: "Entrar a la carta de presentación",
+      langTip: "Puedes cambiar el idioma aquí",
+      welcomeText: "Bienvenidos a mi carta de presentación. Si quieres conocerme un poco más, toca la burbuja que aparece en pantalla. También puedes cambiar el idioma en la esquina superior derecha.",
+      musicOn: "♪ Música: on",
+      musicOff: "♪ Música: off",
+      play: "Reproducir música de fondo",
+      pause: "Pausar música de fondo",
+      volume: "Volumen de la música",
+      animOn: "Animación: on",
+      animOff: "Animación: off",
+      animLabelOn: "Desactivar la animación de fondo de temporada",
+      animLabelOff: "Activar la animación de fondo de temporada",
+      listen: "Escúchame",
+      listenLabel: "Reproducir un breve mensaje de bienvenida (unos 20 segundos)",
+      speaker: "Lucía",
+      nowPlaying: "Mensaje de voz",
+      openingCues: [
+        [0.2, 2.39, "Hola, y bienvenidos a mi portfolio."],
+        [2.89, 5.78, "Soy Lucía Esteban, desarrolladora de Business Central."],
+        [6.26, 7.99, "Aquí descubrirás en qué trabajo,"],
+        [8.21, 9.7, "cómo abordo cada proyecto,"],
+        [9.98, 10.72, "mi formación"],
+        [11.12, 13.56, "y también un poco de quién soy fuera del código."],
+        [14.06, 15.29, "Gracias por tu visita."],
+        [15.7, 19.87, "Si crees que puedo encajar en tu proyecto, estaré encantada de hablar contigo."]
+      ],
+      openingTour: [
+        [6.26, "#expertise"],
+        [8.21, "#ecosystem"],
+        [9.98, "#journey"],
+        [11.12, ".section-beyond"],
+        [15.7, "#contact"]
+      ]
+    }
+  };
+
+  /* Current language, as chosen with the site's EN/ES switch. */
+  XP.lang = function () {
+    var l = document.documentElement.getAttribute("lang");
+    try { l = localStorage.getItem("lucia-portfolio-lang") || l; } catch (e) { /* storage blocked */ }
+    return l === "es" ? "es" : "en";
+  };
+
+  XP.t = function (key) {
+    return (XP.TEXT[XP.lang()] || XP.TEXT.en)[key];
+  };
+
+  /* Run a callback whenever the site language changes (EN/ES buttons). */
+  var langListeners = [];
+  XP.onLanguageChange = function (fn) { langListeners.push(fn); };
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest || !e.target.closest(".lang-btn")) return;
+    // main.js updates the language in its own click handler; run after it.
+    setTimeout(function () { langListeners.forEach(function (fn) { fn(); }); }, 0);
+  });
+
+  XP.hz = function (midi) { return 440 * Math.pow(2, (midi - 69) / 12); };
+})();

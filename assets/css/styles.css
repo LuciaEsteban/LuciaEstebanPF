@@ -1,0 +1,917 @@
+/* ==========================================================================
+   Lucía Esteban — Portfolio
+   Design tokens, layout and components.
+   ========================================================================== */
+
+:root {
+  /* Palette */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f4f6fb;
+  --color-surface: #ffffff;
+  --color-border: #e2e7f1;
+  --color-ink: #0b2545;
+  --color-ink-soft: #17325c;
+  --color-text: #2f3c56;
+  --color-text-muted: #5c6b8a;
+  /* Fixed navy used for "always dark" panels (nav pills, the badge, the
+     Ecosystem "Core" box, the Contact section) — deliberately does NOT
+     change with the theme, so it stays --color-primary rather than
+     --color-ink, which does. */
+  --color-primary: #0b2545;
+  --color-primary-soft: #12386b;
+  --color-accent: #2f6fed;
+  --color-accent-soft: #e8f0ff;
+  --color-header-bg: rgba(255, 255, 255, 0.9); /* translucent site-header — kept separate since it needs alpha, not a solid token */
+
+  /* Type */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+
+  /* Layout */
+  --container-width: 1120px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --shadow-sm: 0 1px 3px rgba(11, 37, 69, 0.08);
+  --shadow-md: 0 8px 24px rgba(11, 37, 69, 0.10);
+  --shadow-lg: 0 20px 48px rgba(11, 37, 69, 0.14);
+
+  --transition-fast: 160ms ease;
+  --transition-base: 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ==========================================================================
+   Dark mode
+   Same token set, repainted. It is switched on by data-theme="dark" on
+   <html>: the inline script in <head> sets it before the first paint
+   (dark on a first visit, otherwise the visitor's last choice) and the
+   toggle button in main.js changes it afterwards.
+   ========================================================================== */
+
+:root[data-theme="dark"] {
+  --color-bg: #0a1526;
+  --color-bg-alt: #0f1e36;
+  --color-surface: #132239;
+  --color-border: #263a5c;
+  --color-ink: #eef3fc;
+  --color-ink-soft: #c3d1ea;
+  --color-text: #c7d2e8;
+  --color-text-muted: #8ea0c4;
+  --color-primary-soft: #9dc0f5;
+  --color-accent: #5b93f5;
+  --color-accent-soft: rgba(47, 111, 237, 0.18);
+  --color-header-bg: rgba(10, 21, 38, 0.85);
+}
+
+/* ==========================================================================
+   Reset & base
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+img { max-width: 100%; display: block; }
+
+h1, h2, h3, h4 {
+  color: var(--color-ink);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); }
+h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); }
+h3 { font-size: 1.2rem; font-weight: 700; }
+
+p { margin: 0 0 1em; }
+
+/* Body copy is mostly muted gray for readability, which is exactly why
+   a bare browser-default <strong> disappears into it — this keeps
+   emphasized phrases in the same weight but the higher-contrast ink
+   color, so the handful of "sell" points in each paragraph actually
+   stand out instead of just going bold-and-still-gray. */
+strong { font-weight: 700; color: var(--color-ink); }
+
+a { color: var(--color-accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+button { font: inherit; }
+
+/* Focus visibility everywhere, including custom controls */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  z-index: 1000;
+  transition: top var(--transition-fast);
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.section { padding: 5.5rem 0; }
+.section-alt { background: var(--color-bg-alt); }
+.section-expertise,
+#journey,
+#about,
+.section-beyond,
+.section-contact {
+  position: relative;
+  overflow: hidden;
+}
+.section-intro {
+  max-width: 62ch;
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.98rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  text-decoration: none;
+}
+.btn:hover { text-decoration: none; transform: translateY(-2px); }
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover { box-shadow: var(--shadow-md); }
+.btn-secondary {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1.5px solid var(--color-border);
+}
+.btn-secondary:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+/* ==========================================================================
+   Header / Nav
+   ========================================================================== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-header-bg);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.9rem;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+.logo:hover { text-decoration: none; }
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.logo-text { font-size: 1rem; }
+
+.primary-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+.primary-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+.primary-nav a {
+  color: var(--color-ink-soft);
+  font-weight: 500;
+  font-size: 0.94rem;
+}
+.primary-nav a:hover { color: var(--color-accent); }
+.primary-nav a.is-active { color: var(--color-accent); }
+.nav-cta {
+  background: var(--color-primary);
+  color: #fff !important;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+}
+.nav-cta:hover { background: var(--color-accent); text-decoration: none; }
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+.lang-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  padding: 0.3rem 0.4rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  border-radius: 4px;
+}
+.lang-btn[aria-pressed="true"] { color: var(--color-ink); text-decoration: underline; text-underline-offset: 4px; }
+.lang-divider { color: var(--color-border); }
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; height: 32px;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-ink-soft);
+  cursor: pointer;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+.theme-toggle:hover { color: var(--color-accent); border-color: var(--color-accent); }
+/* Only one of the two icons is shown at a time — which one flips with
+   the [data-theme] attribute the toggle itself controls. */
+.theme-toggle svg { display: none; }
+.theme-toggle .icon-moon { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px; height: 40px;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.nav-toggle-bar {
+  width: 18px; height: 2px;
+  background: var(--color-ink);
+  margin-inline: auto;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  padding: 5rem 0 4rem;
+  background:
+    radial-gradient(1200px 500px at 80% -10%, var(--color-accent-soft), transparent 60%),
+    linear-gradient(180deg, var(--color-bg), var(--color-bg-alt));
+  overflow: hidden;
+}
+
+/* Soft ambient gradient sweep, styled after the blue/teal/violet palette
+   used across Business Central and Dynamics 365 marketing surfaces.
+   Kept subtle (low opacity, heavy blur) so it reads as texture, not
+   decoration, and sits behind all hero content. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -25% -15%;
+  background: conic-gradient(
+    from 180deg at 72% 22%,
+    rgba(47, 111, 237, 0.16),
+    rgba(22, 163, 148, 0.13),
+    rgba(124, 58, 237, 0.11),
+    rgba(47, 111, 237, 0.16)
+  );
+  filter: blur(70px);
+  animation: heroGradientDrift 20s ease-in-out infinite alternate;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-inner,
+.scroll-hint {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes heroGradientDrift {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  100% { transform: translate3d(3%, -4%, 0) rotate(8deg); }
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+.hero-role {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-primary-soft);
+}
+
+.hero-tagline {
+  font-size: 1.08rem;
+  color: var(--color-text);
+  max-width: 55ch;
+}
+
+/* Quick-scan pills up top — recruiters skim before they read, so
+   "remote" and "bilingual" get to register before the full sentence. */
+.hero-badges {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 0.7rem;
+}
+.hero-badge {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.hero-availability {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  max-width: 52ch;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.hero-photo {
+  display: flex;
+  justify-content: center;
+}
+.hero-photo-frame {
+  position: relative;
+  display: inline-block;
+}
+.hero-photo-frame img {
+  position: relative;
+  z-index: 1;
+  width: min(320px, 100%);
+  height: min(320px, 100%);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 28px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+}
+/* The little "app window" card tucked behind the photo — peeking out
+   at an angle like a second, smaller print left under the main one. */
+.hero-mockup-card {
+  position: absolute;
+  z-index: 0;
+  bottom: -22px;
+  left: -38px;
+  width: 190px;
+  height: auto;
+  transform: rotate(-9deg);
+  border-radius: 14px;
+  box-shadow: var(--shadow-md);
+}
+
+.scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 1.2rem;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+.scroll-hint:hover { color: var(--color-accent); text-decoration: none; }
+.scroll-hint svg { animation: bob 2.2s ease-in-out infinite; }
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ==========================================================================
+   Expertise grid
+   ========================================================================== */
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
+  gap: 1.75rem;
+  margin-top: 3rem;
+}
+
+.expertise-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 2.2rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+.expertise-card:nth-child(1) { border-top: 3px solid #2f6fed; }
+.expertise-card:nth-child(2) { border-top: 3px solid #7c3aed; }
+.expertise-card:nth-child(3) { border-top: 3px solid #d98e2b; }
+.expertise-card:nth-child(4) { border-top: 3px solid #16a394; }
+.expertise-card:nth-child(5) { border-top: 3px solid #e5484d; }
+.expertise-card:nth-child(6) { border-top: 3px solid #475569; }
+
+.expertise-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-accent);
+}
+
+.expertise-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  margin-bottom: 1.1rem;
+}
+.expertise-icon svg { width: 30px; height: 30px; }
+
+/* Each card gets its own accent (matching the top border stripe below)
+   so the six read as distinct capabilities rather than one repeated
+   icon in six boxes. */
+.expertise-card:nth-child(1) .expertise-icon { color: #2f6fed; background: rgba(47, 111, 237, 0.12); }
+.expertise-card:nth-child(2) .expertise-icon { color: #7c3aed; background: rgba(124, 58, 237, 0.12); }
+.expertise-card:nth-child(3) .expertise-icon { color: #d98e2b; background: rgba(217, 142, 43, 0.14); }
+.expertise-card:nth-child(4) .expertise-icon { color: #16a394; background: rgba(22, 163, 148, 0.12); }
+.expertise-card:nth-child(5) .expertise-icon { color: #e5484d; background: rgba(229, 72, 77, 0.12); }
+.expertise-card:nth-child(6) .expertise-icon { color: #475569; background: rgba(71, 85, 105, 0.12); }
+
+.expertise-card h3 { font-size: 1.15rem; margin-bottom: 0.6rem; }
+.expertise-card p { color: var(--color-text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 0; }
+
+/* ==========================================================================
+   Decorative bubble field — soft floating color orbs used to break up
+   otherwise flat section backgrounds. Purely decorative (aria-hidden),
+   CSS-only, positioned behind section content, and covered by the
+   prefers-reduced-motion override below like every other animation here.
+   ========================================================================== */
+.bubble-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(50px);
+  opacity: 0.16;
+}
+.bubble-a {
+  width: 220px; height: 220px;
+  background: #2f6fed;
+  top: -50px; left: 6%;
+  animation: bubbleDriftA 17s ease-in-out infinite;
+}
+.bubble-b {
+  width: 170px; height: 170px;
+  background: #16a394;
+  bottom: -40px; right: 10%;
+  animation: bubbleDriftB 21s ease-in-out infinite;
+}
+.bubble-c {
+  width: 130px; height: 130px;
+  background: #7c3aed;
+  top: 50%; right: 28%;
+  animation: bubbleDriftC 15s ease-in-out infinite;
+}
+.bubble-d {
+  width: 180px; height: 180px;
+  background: #d98e2b;
+  top: 32%; left: 42%;
+  animation: bubbleDriftD 19s ease-in-out infinite;
+}
+.bubble-field-dark .bubble { opacity: 0.28; }
+/* The hero is taller than the other sections that use this component,
+   so its bubbles get more room to roam without feeling static. */
+.bubble-field-hero .bubble-a { top: -30px; left: 2%; }
+.bubble-field-hero .bubble-b { bottom: 10%; right: 8%; }
+.bubble-field-hero .bubble-c { top: 15%; right: 22%; }
+.bubble-field-hero .bubble-d { bottom: -20px; left: 38%; }
+
+@keyframes bubbleDriftA {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(26px, 34px); }
+}
+@keyframes bubbleDriftB {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-22px, -28px); }
+}
+@keyframes bubbleDriftC {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(18px, -22px) scale(1.12); }
+}
+@keyframes bubbleDriftD {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-18px, 20px) scale(1.08); }
+}
+
+/* ==========================================================================
+   Ecosystem
+   ========================================================================== */
+
+.ecosystem-rings {
+  display: grid;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.ring-group {
+  padding: 1.8rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+.ring-core {
+  background: var(--color-primary);
+  position: relative;
+  overflow: hidden;
+}
+.ring-core h3 { color: #fff; }
+.ring-professional { background: var(--color-accent-soft); }
+.ring-additional { background: var(--color-bg-alt); }
+
+/* Faint drifting data-grid texture inside the "Core" box — an ERP/ledger
+   grid motif nodding at Business Central's table-driven aesthetic,
+   without copying any Microsoft brand asset. Purely decorative. */
+.ring-core::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  animation: bcGridDrift 14s linear infinite;
+  pointer-events: none;
+}
+.ring-core > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes bcGridDrift {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 28px 28px, 28px 28px; }
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.chip {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+.chip-professional { background: var(--color-surface); border-color: var(--color-border); color: var(--color-ink-soft); }
+.chip-additional { background: var(--color-surface); border-color: var(--color-border); color: var(--color-text-muted); }
+
+/* ==========================================================================
+   Journey (experience + education, one shared timeline)
+   ========================================================================== */
+
+#expertiseDuration {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+.timeline { margin-top: 2.5rem; position: relative; padding-left: 2rem; border-left: 2px solid var(--color-border); }
+.timeline-item { position: relative; padding-bottom: 1.75rem; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  left: -2.45rem;
+  top: 0.3rem;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  box-shadow: 0 0 0 4px var(--color-bg-alt);
+}
+.timeline-date {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.3rem;
+}
+.timeline-meta { color: var(--color-text-muted); font-size: 0.9rem; }
+
+/* The professional entry is the one that matters most on this timeline,
+   so its dot gets the same accent treatment every other dot used to have
+   — everything else steps back to a quieter, neutral tone. */
+.timeline-item-professional .timeline-dot {
+  width: 16px; height: 16px;
+  left: -2.5rem;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 5px var(--color-accent-soft);
+}
+
+.timeline-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  margin-bottom: 0.6rem;
+}
+.timeline-tag-professional { background: var(--color-accent-soft); color: var(--color-accent); }
+.timeline-tag-education { background: var(--color-bg-alt); color: var(--color-text-muted); border: 1px solid var(--color-border); }
+
+/* Reused for the "in progress" education entry — same pulsing-dot idea
+   the old standalone Education section used for its current degree. */
+.timeline-dot-pulse::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(47, 111, 237, 0.4);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(47, 111, 237, 0.4); }
+  50% { box-shadow: 0 0 0 5px rgba(47, 111, 237, 0); }
+}
+
+/* ==========================================================================
+   About
+   ========================================================================== */
+
+.about-inner { max-width: 74ch; }
+.about-copy p { font-size: 1.05rem; color: var(--color-text); }
+
+/* ==========================================================================
+   Beyond the code
+   ========================================================================== */
+
+.section-beyond { padding: 4rem 0; }
+.beyond-inner {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+}
+.beyond-photo img {
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--color-surface);
+  box-shadow: var(--shadow-md);
+}
+.beyond-copy { flex: 1; min-width: 240px; }
+.beyond-copy h2 { margin-bottom: 0.4rem; }
+.beyond-copy p { margin-bottom: 0; color: var(--color-text-muted); }
+
+/* ==========================================================================
+   AI
+   ========================================================================== */
+
+.section-ai { position: relative; overflow: hidden; }
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+
+.section-contact {
+  background: var(--color-primary);
+  color: #fff;
+  text-align: center;
+}
+.section-contact .eyebrow { color: #9db8ea; }
+.section-contact h2 { color: #fff; }
+.contact-intro {
+  max-width: 50ch;
+  margin-inline: auto;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.08rem;
+}
+.contact-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.contact-link {
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+.contact-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+  text-decoration: none;
+}
+.contact-link[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.site-footer {
+  background: #071a33;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+}
+.footer-inner {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+}
+.back-to-top { color: rgba(255, 255, 255, 0.8); }
+
+/* ==========================================================================
+   Scroll reveal
+   ========================================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .scroll-hint svg { animation: none; }
+  .timeline-dot-pulse::before { animation: none; }
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .hero-ctas { justify-content: center; }
+  .hero-photo { order: -1; }
+  .beyond-inner { flex-direction: column; text-align: center; }
+  .about-inner { text-align: left; }
+}
+
+@media (max-width: 760px) {
+  .nav-toggle { display: flex; }
+
+  .primary-nav {
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.5rem 1.5rem 1.2rem;
+    display: none;
+  }
+  .primary-nav.is-open { display: flex; }
+  .primary-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .primary-nav ul li { width: 100%; }
+  .primary-nav ul li a {
+    display: block;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .nav-cta { margin-top: 0.75rem; text-align: center; }
+  .lang-switch { margin-top: 1rem; justify-content: center; }
+}
+
+@media (max-width: 600px) {
+  .section { padding: 3.5rem 0; }
+  h1 { font-size: 2rem; }
+  .hero-mockup-card { width: 130px; bottom: -14px; left: -20px; }
+}
