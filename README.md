@@ -1,4 +1,4 @@
-# Proyecto 2
+# LuciaEstebanPF
 
 Versión en formato web de la carta de presentación de Lucía Esteban Peña.
 Mismo diseño y misma tecnología que el portfolio (LuciaEsteban.github.io),
@@ -7,10 +7,10 @@ en modalidad 100% remota o híbrida.
 
 ## Publicar en GitHub Pages
 
-1. Crear un repositorio nuevo en la cuenta `LuciaEsteban` llamado `Proyecto-2`.
+1. Crear un repositorio nuevo en la cuenta `LuciaEsteban` llamado `LuciaEstebanPF`.
 2. Subir el contenido de esta carpeta a la rama `main`.
 3. En *Settings > Pages*, elegir *Deploy from a branch*, rama `main`, carpeta `/ (root)`.
-4. La página quedará en https://luciaesteban.github.io/Proyecto-2/
+4. La página quedará en https://luciaesteban.github.io/LuciaEstebanPF/
 
 ## Notas
 
