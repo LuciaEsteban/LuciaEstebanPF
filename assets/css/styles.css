@@ -915,3 +915,6 @@ button:focus-visible,
   h1 { font-size: 2rem; }
   .hero-mockup-card { width: 130px; bottom: -14px; left: -20px; }
 }
+
+/* Empty role lines (the cover letter does not lead with a job title). */
+.hero-role:empty { display: none; }

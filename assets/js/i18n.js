@@ -12,7 +12,7 @@ window.TRANSLATIONS = {
     meta: {
       title: "LuciaEstebanPF",
       description:
-        "Cover letter of Lucía Esteban Peña, software developer. Organized, careful with details, a good team member and open to new fields.",
+        "Cover letter of Lucía Esteban Peña. Organized, careful with details, a good team member and open to new fields.",
     },
     skipLink: "Skip to main content",
     nav: {
@@ -28,10 +28,9 @@ window.TRANSLATIONS = {
     hero: {
       eyebrow: "Cover letter",
       name: "Lucía Esteban Peña",
-      role: "Software developer",
+      role: "",
       tagline:
         "I am organized, detail-oriented and I enjoy working in a team. I am looking for a new challenge where I can <strong>keep learning and give my best</strong>.",
-      badgeLanguages: "Fluent English (B2-C1)",
       badgeRemote: "Remote or hybrid preferred",
       ctaPrimary: "Get to know me",
       ctaSecondary: "Let's talk",
@@ -54,9 +53,9 @@ window.TRANSLATIONS = {
     ecosystem: {
       eyebrow: "Experience",
       title: "What I can do",
-      introBeforeDuration: "I have been working as a developer at a consultancy for ",
+      introBeforeDuration: "I have been working as a Microsoft Dynamics 365 Business Central developer for ",
       introAfterDuration:
-        ", with Microsoft Dynamics 365 Business Central, an application companies use to run their day-to-day operations, from sales and purchasing to projects, staff and accounting.",
+        ", on an ERP: the software a company uses to run its internal operations in one place, from sales and purchasing to invoicing, projects, staff and accounting. That is why I understand how a company works from the inside and how its areas connect. Right now my work is programming, but that does not limit what I can do.",
       work: {
         title: "Some of the things I have done",
         items: [
@@ -134,7 +133,7 @@ window.TRANSLATIONS = {
         },
         professional: {
           tag: "Professional",
-          role: "Software developer",
+          role: "Business Central developer",
           companyFallback: "At a consultancy, with Microsoft Dynamics 365 Business Central",
           versions: "Several projects and clients at once",
           since: "Since {year}",
@@ -194,7 +193,7 @@ window.TRANSLATIONS = {
     meta: {
       title: "LuciaEstebanPF",
       description:
-        "Carta de presentación de Lucía Esteban Peña, programadora. Organizada, cuidadosa con los detalles, integrada en el equipo y abierta a nuevos ámbitos.",
+        "Carta de presentación de Lucía Esteban Peña. Organizada, cuidadosa con los detalles, integrada en el equipo y abierta a nuevos ámbitos.",
     },
     skipLink: "Ir al contenido principal",
     nav: {
@@ -210,10 +209,9 @@ window.TRANSLATIONS = {
     hero: {
       eyebrow: "Carta de presentación",
       name: "Lucía Esteban Peña",
-      role: "Programadora",
+      role: "",
       tagline:
         "Soy organizada, detallista y me gusta trabajar en equipo. Busco un nuevo reto en el que <strong>seguir aprendiendo y aportar lo mejor de mí</strong>.",
-      badgeLanguages: "Inglés fluido (B2-C1)",
       badgeRemote: "Preferencia: remoto o híbrido",
       ctaPrimary: "Conóceme",
       ctaSecondary: "Hablemos",
@@ -238,7 +236,7 @@ window.TRANSLATIONS = {
       title: "Qué sé hacer",
       introBeforeDuration: "Llevo ",
       introAfterDuration:
-        " trabajando como programadora en una consultora con Microsoft Dynamics 365 Business Central, una aplicación con la que las empresas gestionan su día a día, desde las ventas y las compras hasta los proyectos, el personal o la contabilidad.",
+        " trabajando como desarrolladora de Microsoft Dynamics 365 Business Central, un ERP: el programa con el que una empresa gestiona su funcionamiento interno en un solo sitio, desde las ventas y las compras hasta la facturación, los proyectos, el personal y la contabilidad. Por eso conozco cómo se mueve una empresa por dentro y cómo se conectan sus áreas. Ahora mismo mi trabajo es la programación, pero eso no limita lo que puedo hacer.",
       work: {
         title: "Algunas cosas que he hecho",
         items: [
@@ -316,7 +314,7 @@ window.TRANSLATIONS = {
         },
         professional: {
           tag: "Profesional",
-          role: "Programadora",
+          role: "Desarrolladora de Business Central",
           companyFallback: "En una consultora, con Microsoft Dynamics 365 Business Central",
           versions: "Varios proyectos y clientes a la vez",
           since: "Desde {year}",

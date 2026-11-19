@@ -451,3 +451,5 @@ body > .site-footer {
   .intro-orb, .intro-code-track { animation: none; }
   html.intro-open body > * { filter: none !important; transform: none !important; }
 }
+
+.intro-role:empty { display: none; }

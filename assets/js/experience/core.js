@@ -29,7 +29,7 @@
     en: {
       // Intro
       eyebrow: "Cover letter",
-      role: "Software developer",
+      role: "",
       cta: "Tap the bubble to enter",
       hint: "Or press Enter to continue",
       bubbleLabel: "Enter the cover letter",
@@ -72,7 +72,7 @@
     },
     es: {
       eyebrow: "Carta de presentación",
-      role: "Programadora",
+      role: "",
       cta: "Toca la burbuja para entrar",
       hint: "O pulsa Enter para continuar",
       bubbleLabel: "Entrar a la carta de presentación",
