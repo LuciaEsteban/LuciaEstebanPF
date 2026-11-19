@@ -10,7 +10,7 @@
 window.TRANSLATIONS = {
   en: {
     meta: {
-      title: "Lucía Esteban PCP",
+      title: "LuciaEstebanPF",
       description:
         "Cover letter of Lucía Esteban Peña, software developer. Organized, careful with details, a good team member and open to new fields.",
     },
@@ -192,7 +192,7 @@ window.TRANSLATIONS = {
 
   es: {
     meta: {
-      title: "Lucía Esteban PCP",
+      title: "LuciaEstebanPF",
       description:
         "Carta de presentación de Lucía Esteban Peña, programadora. Organizada, cuidadosa con los detalles, integrada en el equipo y abierta a nuevos ámbitos.",
     },
