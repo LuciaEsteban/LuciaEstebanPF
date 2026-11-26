@@ -58,7 +58,7 @@
     }
     muteBtn.addEventListener("click", function () { XP.Voice.setMuted(!XP.Voice.muted); });
 
-    // The red X stops everything: voice, captions and the guided tour.
+    // The X stops everything: voice, captions and the guided tour.
     var closeBtn = box.querySelector(".voice-cc-close");
     closeBtn.innerHTML =
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/></svg>';
@@ -239,28 +239,33 @@
     init: function () {
       var frame = document.querySelector(".hero-photo-frame");
       if (!frame) return;
-      var used = false;
-
-      var bubble = document.createElement("button");
-      bubble.type = "button";
-      bubble.className = "speech-bubble";
-      bubble.innerHTML =
-        '<span class="speech-icon">' + SPEAKER_SVG + "</span>" +
-        '<span class="speech-text"></span>' +
-        '<span class="speech-ring" aria-hidden="true"></span>' +
-        '<span class="speech-lines" aria-hidden="true"><i></i><i></i><i></i></span>';
-      frame.appendChild(bubble);
-      frame.classList.add("has-listen");
-
-      var captions = Captions(frame);
+      var used = false, bubble = null;
 
       function paint() {
+        if (!bubble) return;
         bubble.querySelector(".speech-text").textContent = t("listen");
         bubble.setAttribute("aria-label", t("listenLabel"));
       }
 
+      /* The "Listen to me" bubble on the photo (made again if the message is cancelled). */
+      function buildBubble() {
+        bubble = document.createElement("button");
+        bubble.type = "button";
+        bubble.className = "speech-bubble";
+        bubble.innerHTML =
+          '<span class="speech-icon">' + SPEAKER_SVG + "</span>" +
+          '<span class="speech-text"></span>' +
+          '<span class="speech-ring" aria-hidden="true"></span>' +
+          '<span class="speech-lines" aria-hidden="true"><i></i><i></i><i></i></span>';
+        frame.appendChild(bubble);
+        frame.classList.add("has-listen");
+        bubble.addEventListener("click", play);
+        paint();
+      }
+
       /* Pop the bubble like the intro one: swell, burst lines, ripple. */
       function popBubble() {
+        var popped = bubble;
         var r = bubble.getBoundingClientRect();
         var burst = document.createElement("span");
         burst.className = "speech-burst";
@@ -270,8 +275,8 @@
         burst.style.top = bubble.offsetTop + bubble.offsetHeight / 2 + "px";
         frame.appendChild(burst);
         setTimeout(function () { burst.remove(); }, 800);
-        bubble.classList.add("is-popping");
-        setTimeout(function () { bubble.remove(); }, 450);
+        popped.classList.add("is-popping");
+        setTimeout(function () { popped.remove(); }, 450);
         XP.Ripple.at(r.left + r.width / 2, r.top + r.height / 2, r.width / 2, "#9dc0f5");
         if (XP.Sound.enabled) { XP.Sound.init(); XP.Sound.pop(0.5); }
       }
@@ -282,16 +287,20 @@
         used = true;
         frame.classList.remove("has-listen");
         popBubble();
+        var captions = Captions(frame);
         captions.open();
         var started = false, dismissed = false;
         var tour = Tour(t("openingTour"), function () { captions.float(); });
-        // Red X: stop the voice, end the tour (back to the top) and close the captions.
+        // X: stop the voice, end the tour (back to the top), close the captions
+        // and bring the "Listen to me" bubble back.
         captions.onDismiss = function () {
           if (dismissed) return;
           dismissed = true;
           XP.Voice.stop();
           tour.finish();
           captions.close(0);
+          used = false;
+          buildBubble();
         };
         setTimeout(function () {
           if (dismissed) return;
@@ -310,10 +319,9 @@
         }, 350);
       }
 
-      bubble.addEventListener("click", play);
+      buildBubble();
       frame.addEventListener("click", play);
       XP.onLanguageChange(paint);
-      paint();
     }
   };
 })();

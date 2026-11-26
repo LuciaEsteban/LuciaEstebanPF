@@ -249,7 +249,7 @@
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
-/* Red X: stops the voice, the tour and the captions, and returns to the top */
+/* Light blue X: stops the voice, the tour and the captions, and returns to the top */
 .voice-cc-close {
   width: 28px;
   height: 28px;
@@ -260,16 +260,16 @@
   padding: 0;
   border: 0;
   border-radius: 50%;
-  color: #fff;
-  background: #dc2626;
-  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.45);
+  color: var(--comic-ink);
+  background: #bfdbfe;
+  box-shadow: 0 2px 8px rgba(147, 197, 253, 0.45);
   cursor: pointer;
   pointer-events: auto;
   transition: transform var(--transition-fast), background var(--transition-fast);
 }
 .voice-cc-close svg { width: 14px; height: 14px; }
-.voice-cc-close:hover { background: #b91c1c; transform: scale(1.1); }
-.voice-cc-close:focus-visible { outline: 3px solid #dc2626; outline-offset: 2px; }
+.voice-cc-close:hover { background: #93c5fd; transform: scale(1.1); }
+.voice-cc-close:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
 .voice-cc-eq {
   display: inline-flex;
   align-items: flex-end;
