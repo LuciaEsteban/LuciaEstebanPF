@@ -30,7 +30,7 @@ window.TRANSLATIONS = {
       name: "Lucía Esteban Peña",
       role: "",
       tagline:
-        "I am organized, detail-oriented and I enjoy working in a team. I am looking for a new challenge where I can <strong>keep learning and give my best</strong>.",
+        "I am organized, detail-oriented and I enjoy working in a team. I am currently working, and I am looking for a new challenge where I can <strong>keep learning and give my best</strong>.",
       badgeRemote: "Remote or hybrid preferred",
       ctaPrimary: "Get to know me",
       ctaSecondary: "Let's talk",
@@ -53,7 +53,7 @@ window.TRANSLATIONS = {
     ecosystem: {
       eyebrow: "Experience",
       title: "What I can do",
-      introBeforeDuration: "I have been working as a Microsoft Dynamics 365 Business Central developer for ",
+      introBeforeDuration: "I am currently working as a Microsoft Dynamics 365 Business Central developer, and I have been doing so for ",
       introAfterDuration:
         ", on an ERP: the software a company uses to run its internal operations in one place, from sales and purchasing to invoicing, projects, staff and accounting. Working with it has given me a solid foundation in how a company operates and how its areas connect, and I would be glad to build on it and specialise further if a role requires it. Right now my work is programming, but that does not limit what I can do.",
       work: {
@@ -98,7 +98,7 @@ window.TRANSLATIONS = {
       eyebrow: "Next step",
       title: "What I am looking for",
       intro:
-        "I want to discover more of the world and broaden my horizons, in a place where I can contribute what I know and keep learning. I feel most comfortable working remotely or in a hybrid setup, although I am open to other options.",
+        "I am currently working and I want to keep doing so, but I would like to discover more of the world and broaden my horizons, in a place where I can contribute what I know and keep learning. I feel most comfortable working remotely or in a hybrid setup, although I am open to other options.",
       sectorsTitle: "Fields that especially catch my attention",
       sectors: ["Artificial intelligence", "Data management", "Administration", "Art"],
       open: "Even so, <strong>I am open to any field</strong>. I enjoy discovering new worlds.",
@@ -132,11 +132,11 @@ window.TRANSLATIONS = {
           body: "Higher vocational qualification in software development.",
         },
         professional: {
-          tag: "Professional",
+          tag: "Professional (current)",
           role: "Business Central developer",
           companyFallback: "At a consultancy, with Microsoft Dynamics 365 Business Central",
           versions: "Several projects and clients at once",
-          since: "Since {year}",
+          since: "Since {year} to the present",
         },
         unir: {
           tag: "Education (in progress)",
@@ -211,7 +211,7 @@ window.TRANSLATIONS = {
       name: "Lucía Esteban Peña",
       role: "",
       tagline:
-        "Soy organizada, detallista y me gusta trabajar en equipo. Busco un nuevo reto en el que <strong>seguir aprendiendo y aportar lo mejor de mí</strong>.",
+        "Soy organizada, detallista y me gusta trabajar en equipo. Actualmente sigo trabajando y busco un nuevo reto en el que <strong>seguir aprendiendo y aportar lo mejor de mí</strong>.",
       badgeRemote: "Preferencia: remoto o híbrido",
       ctaPrimary: "Conóceme",
       ctaSecondary: "Hablemos",
@@ -234,9 +234,9 @@ window.TRANSLATIONS = {
     ecosystem: {
       eyebrow: "Experiencia",
       title: "Qué sé hacer",
-      introBeforeDuration: "Llevo ",
+      introBeforeDuration: "Sigo trabajando y llevo ",
       introAfterDuration:
-        " trabajando como desarrolladora de Microsoft Dynamics 365 Business Central, un ERP: el programa con el que una empresa gestiona su funcionamiento interno en un solo sitio, desde las ventas y las compras hasta la facturación, los proyectos, el personal y la contabilidad. Trabajar con él me ha dado una base sólida sobre cómo funciona una empresa y cómo se conectan sus áreas, y me gustaría seguir aprendiendo y especializarme si el puesto lo requiere. Ahora mismo mi trabajo es la programación, pero eso no limita lo que puedo hacer.",
+        " como desarrolladora de Microsoft Dynamics 365 Business Central, un ERP: el programa con el que una empresa gestiona su funcionamiento interno en un solo sitio, desde las ventas y las compras hasta la facturación, los proyectos, el personal y la contabilidad. Trabajar con él me ha dado una base sólida sobre cómo funciona una empresa y cómo se conectan sus áreas, y me gustaría seguir aprendiendo y especializarme si el puesto lo requiere. Ahora mismo mi trabajo es la programación, pero eso no limita lo que puedo hacer.",
       work: {
         title: "Algunas cosas que he hecho",
         items: [
@@ -279,7 +279,7 @@ window.TRANSLATIONS = {
       eyebrow: "El siguiente paso",
       title: "Qué busco",
       intro:
-        "Quiero descubrir más mundo y ampliarme, en un lugar donde aportar lo que sé y seguir aprendiendo. Me siento más cómoda en remoto o en híbrido, aunque estoy abierta a valorar otras opciones.",
+        "Actualmente sigo trabajando y quiero seguir haciéndolo, pero me gustaría descubrir más mundo y ampliarme, en un lugar donde aportar lo que sé y seguir aprendiendo. Me siento más cómoda en remoto o en híbrido, aunque estoy abierta a valorar otras opciones.",
       sectorsTitle: "Ámbitos que me llaman especialmente la atención",
       sectors: ["Inteligencia artificial", "Manejo de datos", "Administración", "Arte"],
       open: "Aun así, <strong>estoy abierta a cualquier ámbito</strong>. Me gusta descubrir mundos nuevos.",
@@ -313,11 +313,11 @@ window.TRANSLATIONS = {
           body: "Ciclo Formativo de Grado Superior en desarrollo de software.",
         },
         professional: {
-          tag: "Profesional",
+          tag: "Profesional (en activo)",
           role: "Desarrolladora de Business Central",
           companyFallback: "En una consultora, con Microsoft Dynamics 365 Business Central",
           versions: "Varios proyectos y clientes a la vez",
-          since: "Desde {year}",
+          since: "Desde {year} hasta la actualidad",
         },
         unir: {
           tag: "Formación (en curso)",
