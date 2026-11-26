@@ -364,6 +364,7 @@
   /* Voice clips (assets/audio/<name>-<en|es>.mp3)                       */
   /* ------------------------------------------------------------------ */
   XP.Voice = {
+    RATE: 1.15,
     VERSION: 5,   // bump when a recording is replaced, so browsers reload it
     volume: 0.7,  // set from the voice control; the clip follows it live
     muted: false,
@@ -393,6 +394,12 @@
       var a = (this.clip = new window.Audio(url));
       a.volume = this.volume;
       a.muted = this.muted;
+      /* A little faster than recorded, keeping the pitch. Captions and the tour
+         follow the audio clock, so they stay in sync. */
+      a.preservesPitch = true;
+      a.mozPreservesPitch = true;
+      a.webkitPreservesPitch = true;
+      a.playbackRate = this.RATE;
       var finish = function () {
         if (self.clip !== a) return;
         self.clip = null;
