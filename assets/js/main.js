@@ -350,10 +350,6 @@
       return value;
     }, resolvePath(dict, "contact.linkedinUnavailable"));
 
-    wireLink("contactGithub", CONFIG.githubUrl, function (value) {
-      return value;
-    }, null);
-
     updateCvLink(lang);
   }
 
