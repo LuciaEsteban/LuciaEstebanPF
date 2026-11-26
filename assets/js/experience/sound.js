@@ -364,7 +364,7 @@
   /* Voice clips (assets/audio/<name>-<en|es>.mp3)                       */
   /* ------------------------------------------------------------------ */
   XP.Voice = {
-    VERSION: 3,   // bump when a recording is replaced, so browsers reload it
+    VERSION: 4,   // bump when a recording is replaced, so browsers reload it
     VOLUME: 0.7,
     clip: null,
 

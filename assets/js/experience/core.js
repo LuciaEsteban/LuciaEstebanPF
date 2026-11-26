@@ -47,27 +47,31 @@
       animLabelOff: "Turn on the seasonal background animation",
       // Voice message
       listen: "Listen to me",
-      listenLabel: "Play a short spoken welcome message (about 20 seconds)",
+      listenLabel: "Play a short spoken welcome message (about 40 seconds)",
       speaker: "Lucía",
       nowPlaying: "Voice message",
       // Captions, timed to the pauses in the recording: [start s, end s, words]
       openingCues: [
-        [0.21, 2.33, "Hello, and welcome to my portfolio."],
-        [2.71, 5.77, "I'm Lucía Esteban, a Business Central developer."],
-        [6.29, 8.45, "Here you'll discover what I work on,"],
-        [8.74, 10.59, "how I approach each project,"],
-        [10.73, 11.78, "my background,"],
-        [11.98, 14.48, "and a little about who I am beyond the code."],
-        [15.13, 16.41, "Thank you for stopping by."],
-        [16.68, 20.53, "If you think I could be a good fit for your team, I'd be glad to talk."]
+        [0.35, 2.1, "Hello and welcome to my cover letter."],
+        [2.83, 4.8, "Here you can get to know me a little better,"],
+        [5.34, 7.8, "from the way I work and my strongest points,"],
+        [8.21, 10.95, "to the tools I use, including how I use AI."],
+        [11.92, 14.4, "We will also go through my studies and training,"],
+        [15.09, 18.52, "and finish with a small glimpse of what I do outside of work."],
+        [19.23, 22.75, "I hope you enjoy your visit to my cover letter and, if so,"],
+        [23.14, 25.5, "I would be delighted to get to know you in return,"],
+        [26.07, 28.76, "either through the contact form at the bottom of the page,"],
+        [29.12, 31.18, "or through any of the other means I offer here."],
+        [32.3, 35.36, "Thank you very much for your attention, and have a good day."]
       ],
       // Guided tour while the message plays: [start s, element to show]
       openingTour: [
-        [6.29, "#expertise"],
-        [8.74, "#ecosystem"],
-        [10.73, "#journey"],
-        [11.98, ".section-beyond"],
-        [16.68, "#contact"]
+        [5.34, "#expertise"],
+        [8.21, "#ecosystem"],
+        [9.6, "#ai"],
+        [11.92, "#journey"],
+        [15.3, ".section-beyond"],
+        [26.07, "#contact"]
       ]
     },
     es: {
@@ -88,25 +92,29 @@
       animLabelOn: "Desactivar la animación de fondo de temporada",
       animLabelOff: "Activar la animación de fondo de temporada",
       listen: "Escúchame",
-      listenLabel: "Reproducir un breve mensaje de bienvenida (unos 20 segundos)",
+      listenLabel: "Reproducir un breve mensaje de bienvenida (unos 40 segundos)",
       speaker: "Lucía",
       nowPlaying: "Mensaje de voz",
       openingCues: [
-        [0.2, 2.39, "Hola, y bienvenidos a mi portfolio."],
-        [2.89, 5.78, "Soy Lucía Esteban, desarrolladora de Business Central."],
-        [6.26, 7.99, "Aquí descubrirás en qué trabajo,"],
-        [8.21, 9.7, "cómo abordo cada proyecto,"],
-        [9.98, 10.72, "mi formación"],
-        [11.12, 13.56, "y también un poco de quién soy fuera del código."],
-        [14.06, 15.29, "Gracias por tu visita."],
-        [15.7, 19.87, "Si crees que puedo encajar en tu proyecto, estaré encantada de hablar contigo."]
+        [0.35, 3.25, "Hola y bienvenidos a mi carta de presentación."],
+        [3.88, 5.85, "Aquí podréis conocerme un poco mejor,"],
+        [6.27, 9.65, "desde mi forma de trabajo y mis aspectos más destacables,"],
+        [10.08, 13.19, "a las herramientas que utilizo, como mi forma de usar la IA."],
+        [14.04, 16.3, "Pasando también por mis estudios y formación,"],
+        [16.77, 19.6, "hasta un pequeño detalle de lo que hago fuera del trabajo."],
+        [20.34, 23.7, "Espero les sea agradable este paso por mi carta de presentación"],
+        [24.19, 27.77, "y, en caso de que así sea, estaré encantada de conocerles de vuelta,"],
+        [28.27, 32.1, "ya sea desde el formulario de contacto que les ofrezco al final de la página,"],
+        [32.53, 35.7, "o bien por alguno de los otros medios que ofrezco en este mismo lugar."],
+        [36.27, 39.5, "Muchas gracias por la atención, que tengan un buen día."]
       ],
       openingTour: [
-        [6.26, "#expertise"],
-        [8.21, "#ecosystem"],
-        [9.98, "#journey"],
-        [11.12, ".section-beyond"],
-        [15.7, "#contact"]
+        [6.27, "#expertise"],
+        [10.08, "#ecosystem"],
+        [11.6, "#ai"],
+        [14.04, "#journey"],
+        [16.77, ".section-beyond"],
+        [28.27, "#contact"]
       ]
     }
   };
