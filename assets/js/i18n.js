@@ -120,9 +120,9 @@ window.TRANSLATIONS = {
           body: "My first job, where I learned to deal with customers.",
         },
         electronics: {
-          tag: "Education",
+          tag: "Education (partial, not completed)",
           title: "Electronics and Industrial Automation Engineering",
-          meta: "2 years of study, Universidad Politécnica de Alcalá",
+          meta: "Partial studies, not completed: 2 years of study, Universidad Politécnica de Alcalá",
           body: "My starting point on the way to software development.",
         },
         dam: {
@@ -300,9 +300,9 @@ window.TRANSLATIONS = {
           body: "Mi primer trabajo, donde aprendí a tratar con clientes.",
         },
         electronics: {
-          tag: "Formación",
+          tag: "Formación (parcial, sin finalizar)",
           title: "Ingeniería Electrónica Automática Industrial",
-          meta: "2 años completados, Universidad Politécnica de Alcalá",
+          meta: "Estudios parciales, sin finalizar: 2 años cursados, Universidad Politécnica de Alcalá",
           body: "Fue mi punto de partida hacia el desarrollo de software.",
         },
         dam: {
