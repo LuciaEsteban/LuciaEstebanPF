@@ -22,6 +22,11 @@
     '<path class="w2" d="M33.5 14a14 14 0 010 20" stroke="currentColor" stroke-width="3.4" fill="none" stroke-linecap="round"/>' +
     '<path class="w3" d="M38 9.5a20 20 0 010 29" stroke="currentColor" stroke-width="3.4" fill="none" stroke-linecap="round"/></svg>';
 
+  var SPEAKER_OFF_SVG =
+    '<svg viewBox="0 0 48 48" aria-hidden="true">' +
+    '<path d="M8 19v10h7l9 7V12l-9 7H8z" fill="currentColor"/>' +
+    '<path d="M30 18l11 12M41 18L30 30" stroke="currentColor" stroke-width="3.4" fill="none" stroke-linecap="round"/></svg>';
+
   /* ------------------------------------------------------------------ */
   /* Captions, synced to the recording                                   */
   /* ------------------------------------------------------------------ */
@@ -30,7 +35,7 @@
     box.className = "voice-cc";
     box.innerHTML =
       '<div class="voice-cc-head">' +
-      '<span class="voice-cc-icon">' + SPEAKER_SVG + "</span>" +
+      '<button type="button" class="voice-cc-icon"></button>' +
       '<span class="voice-cc-name"></span>' +
       '<span class="voice-cc-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>' +
       "</div>" +
@@ -38,6 +43,20 @@
       '<p class="voice-cc-now"></p>';
     // Lives at page level (not inside the photo) so it stays above everything.
     document.body.appendChild(box);
+    // The sound icon doubles as the mute / unmute button.
+    var muteBtn = box.querySelector(".voice-cc-icon");
+    function paintMute() {
+      var muted = XP.Voice.muted;
+      muteBtn.innerHTML = muted ? SPEAKER_OFF_SVG : SPEAKER_SVG;
+      muteBtn.classList.toggle("is-muted", muted);
+      muteBtn.setAttribute("aria-pressed", muted ? "true" : "false");
+      muteBtn.setAttribute("aria-label", muted ? t("voiceUnmute") : t("voiceMute"));
+      muteBtn.title = muted ? t("voiceUnmute") : t("voiceMute");
+    }
+    muteBtn.addEventListener("click", function () { XP.Voice.setMuted(!XP.Voice.muted); });
+    XP.Voice.onChange(paintMute);
+    XP.onLanguageChange(paintMute);
+    paintMute();
     var prevEl = box.querySelector(".voice-cc-prev");
     var nowEl = box.querySelector(".voice-cc-now");
     var cues = [], words = [], current = -1, raf = 0;
