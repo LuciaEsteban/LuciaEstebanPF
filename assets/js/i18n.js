@@ -132,7 +132,7 @@ window.TRANSLATIONS = {
           body: "Higher vocational qualification in software development.",
         },
         professional: {
-          tag: "Professional (current)",
+          tag: "Professional (in progress)",
           role: "Business Central developer",
           companyFallback: "At a consultancy, with Microsoft Dynamics 365 Business Central",
           versions: "Several projects and clients at once",
@@ -313,7 +313,7 @@ window.TRANSLATIONS = {
           body: "Ciclo Formativo de Grado Superior en desarrollo de software.",
         },
         professional: {
-          tag: "Profesional (en activo)",
+          tag: "Profesional (en curso)",
           role: "Desarrolladora de Business Central",
           companyFallback: "En una consultora, con Microsoft Dynamics 365 Business Central",
           versions: "Varios proyectos y clientes a la vez",
