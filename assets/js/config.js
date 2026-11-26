@@ -25,8 +25,8 @@ window.SITE_CONFIG = {
   professionalEmail: "luciaes.dev@gmail.com",
   linkedInUrl: "https://www.linkedin.com/in/luciaes-dev/",
   cvPdfUrls: {
-    en: "assets/files/Lucia-Esteban-CV-EN.pdf?v=202611261520",
-    es: "assets/files/Lucia-Esteban-CV-ES.pdf?v=202611261520",
+    en: "assets/files/Lucia-Esteban-CV-EN.pdf?v=202611261545",
+    es: "assets/files/Lucia-Esteban-CV-ES.pdf?v=202611261545",
   },
 
   /**
