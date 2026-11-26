@@ -100,7 +100,7 @@ window.TRANSLATIONS = {
       intro:
         "I am currently working and I want to keep doing so, but I would like to discover more of the world and broaden my horizons, in a place where I can contribute what I know and keep learning. I feel most comfortable working remotely or in a hybrid setup, although I am open to other options.",
       sectorsTitle: "Fields that especially catch my attention",
-      sectors: ["Artificial intelligence", "Data management", "Administration", "Art"],
+      sectors: ["Data management", "Administration", "Art", "Artificial intelligence"],
       open: "Even so, <strong>I am open to any field</strong>. I enjoy discovering new worlds.",
     },
     ai: {
@@ -281,7 +281,7 @@ window.TRANSLATIONS = {
       intro:
         "Actualmente sigo trabajando y quiero seguir haciéndolo, pero me gustaría descubrir más mundo y ampliarme, en un lugar donde aportar lo que sé y seguir aprendiendo. Me siento más cómoda en remoto o en híbrido, aunque estoy abierta a valorar otras opciones.",
       sectorsTitle: "Ámbitos que me llaman especialmente la atención",
-      sectors: ["Inteligencia artificial", "Manejo de datos", "Administración", "Arte"],
+      sectors: ["Manejo de datos", "Administración", "Arte", "Inteligencia artificial"],
       open: "Aun así, <strong>estoy abierta a cualquier ámbito</strong>. Me gusta descubrir mundos nuevos.",
     },
     ai: {
