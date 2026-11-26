@@ -50,7 +50,7 @@
       animLabelOff: "Turn on the seasonal background animation",
       // Voice message
       listen: "Listen to me",
-      listenLabel: "Play a short spoken welcome message (about 37 seconds)",
+      listenLabel: "Play a short spoken welcome message (about 40 seconds)",
       speaker: "Lucía",
       nowPlaying: "Voice message",
       // Captions, timed to the pauses in the recording: [start s, end s, words]
@@ -98,7 +98,7 @@
       animLabelOn: "Desactivar la animación de fondo de temporada",
       animLabelOff: "Activar la animación de fondo de temporada",
       listen: "Escúchame",
-      listenLabel: "Reproducir un breve mensaje de bienvenida (unos 37 segundos)",
+      listenLabel: "Reproducir un breve mensaje de bienvenida (unos 40 segundos)",
       speaker: "Lucía",
       nowPlaying: "Mensaje de voz",
       openingCues: [
