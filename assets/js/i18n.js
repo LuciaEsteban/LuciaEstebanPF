@@ -12,7 +12,7 @@ window.TRANSLATIONS = {
     meta: {
       title: "LuciaEstebanPF",
       description:
-        "Cover letter of Lucía Esteban Peña. Organized, careful with details, a good team member and open to new fields.",
+        "Cover letter of Lucía Esteban Peña. Organized, detail-oriented, a good team player and open to new fields.",
     },
     skipLink: "Skip to main content",
     nav: {
@@ -30,7 +30,7 @@ window.TRANSLATIONS = {
       name: "Lucía Esteban Peña",
       role: "",
       tagline:
-        "I am organized, detail-oriented and I enjoy working in a team. I am currently working at a consultancy, and I am looking for a new challenge where I can <strong>keep learning and give my best</strong>.",
+        "I am organized, detail-oriented and I enjoy working in a team. I currently work at a consulting firm, and I am looking for a new challenge where I can <strong>keep learning and give my best</strong>.",
       badgeRemote: "Remote or hybrid preferred",
       ctaPrimary: "Get to know me",
       ctaSecondary: "Let's talk",
@@ -42,10 +42,10 @@ window.TRANSLATIONS = {
       title: "How I work",
       intro: "This is what I am like day to day.",
       items: {
-        balance: { title: "Team player", body: "I get on well with people and I like a good atmosphere. Wherever I have worked, I have felt part of the team very soon, and I can also move forward on my own when needed." },
-        organized: { title: "Organized", body: "I like to be organized. I note down deadlines, break the work into smaller tasks and set priorities so that nothing slips through. And when there is no time to be that thorough, I still manage well." },
+        balance: { title: "Team player", body: "I get on well with people and I like a positive working atmosphere. Wherever I have worked, I have felt part of the team very quickly, and I can also work independently when needed." },
+        organized: { title: "Organized", body: "I like to be organized. I note down deadlines, break the work into smaller tasks and set priorities so that nothing slips through the cracks. And when there is no time to be that thorough, I can still get things done." },
         adapt: { title: "Adaptable", body: "Change does not scare me. I quickly get used to new tools, colleagues and ways of working." },
-        communication: { title: "Good with people", body: "I am sociable and I enjoy dealing with people. I also have experience working with clients." },
+        communication: { title: "Good with people", body: "I am sociable and I enjoy dealing with people. I also have experience dealing with clients." },
         detail: { title: "Detail-oriented", body: "I like things to be done well, so I review my work carefully before considering it finished." },
         learn: { title: "Eager to learn", body: "I enjoy learning new things. That is why I keep studying while I work." },
       },
@@ -55,7 +55,7 @@ window.TRANSLATIONS = {
       title: "What I can do",
       introBeforeDuration: "I am currently working as a Microsoft Dynamics 365 Business Central developer, and I have been doing so for ",
       introAfterDuration:
-        ", on an ERP: the software a company uses to run its internal operations in one place, from sales and purchasing to invoicing, projects, staff and accounting. Working with it has given me a solid foundation in how a company operates and how its areas connect, and I would be glad to build on it and specialise further if a role requires it. Right now my work is programming, but that does not limit what I can do.",
+        ". Business Central is an ERP: the software a company uses to run its internal operations in one place, from sales and purchasing to invoicing, projects, human resources and accounting. Working with it has given me a solid foundation in how a company operates and how its areas connect, and I would be glad to build on it and specialize further if a role requires it. Right now my work is programming, but that does not limit what I can do.",
       work: {
         title: "Some of the things I have done",
         items: [
@@ -63,7 +63,7 @@ window.TRANSLATIONS = {
           "Development of a project management module",
           "HR APIs",
           "Delivery note and sales reports",
-          "Accounting entries data management",
+          "Ledger entries data management",
           "Electronic invoicing",
           "Payment due dates",
         ],
@@ -98,7 +98,7 @@ window.TRANSLATIONS = {
       eyebrow: "Next step",
       title: "What I am looking for",
       intro:
-        "I am currently working and I want to keep doing so, but I would like to discover more of the world and broaden my horizons, in a place where I can contribute what I know and keep learning. I feel most comfortable working remotely or in a hybrid setup, although I am open to other options.",
+        "I am currently working and wish to continue doing so, but I would like to see more of the world and broaden my horizons, somewhere I can contribute what I know and keep learning. I feel most comfortable working remotely or in a hybrid setup, although I am open to other options.",
       sectorsTitle: "Fields that especially catch my attention",
       sectors: ["Data management", "Administration", "Art", "Artificial intelligence"],
       open: "Even so, <strong>I am open to any field</strong>. I enjoy discovering new worlds.",
@@ -122,14 +122,14 @@ window.TRANSLATIONS = {
         electronics: {
           tag: "Education",
           title: "Electronics and Industrial Automation Engineering",
-          meta: "2 years completed, Universidad Politécnica de Alcalá",
-          body: "My starting point towards software development.",
+          meta: "2 years of study, Universidad Politécnica de Alcalá",
+          body: "My starting point on the way to software development.",
         },
         dam: {
           tag: "Education",
-          title: "Higher Technician in Multiplatform Application Development (DAM)",
+          title: "Advanced Vocational Training in Multiplatform Application Development (DAM)",
           meta: "Completed",
-          body: "Higher vocational qualification in software development.",
+          body: "Advanced vocational qualification in software development.",
         },
         professional: {
           tag: "Professional (in progress)",
@@ -140,7 +140,7 @@ window.TRANSLATIONS = {
         },
         unir: {
           tag: "Education (in progress)",
-          title: "Computer Engineering, UNIR",
+          title: "Bachelor's Degree in Computer Engineering, UNIR",
           body: "Online degree that I combine with my job.",
         },
       },
