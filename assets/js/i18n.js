@@ -30,7 +30,7 @@ window.TRANSLATIONS = {
       name: "Lucía Esteban Peña",
       role: "",
       tagline:
-        "I am organized, detail-oriented and I enjoy working in a team. I am currently working, and I am looking for a new challenge where I can <strong>keep learning and give my best</strong>.",
+        "I am organized, detail-oriented and I enjoy working in a team. I am currently working at a consultancy, and I am looking for a new challenge where I can <strong>keep learning and give my best</strong>.",
       badgeRemote: "Remote or hybrid preferred",
       ctaPrimary: "Get to know me",
       ctaSecondary: "Let's talk",
@@ -211,7 +211,7 @@ window.TRANSLATIONS = {
       name: "Lucía Esteban Peña",
       role: "",
       tagline:
-        "Soy organizada, detallista y me gusta trabajar en equipo. Actualmente sigo trabajando y busco un nuevo reto en el que <strong>seguir aprendiendo y aportar lo mejor de mí</strong>.",
+        "Soy organizada, detallista y me gusta trabajar en equipo. Actualmente estoy trabajando en una consultoría y busco un nuevo reto en el que <strong>seguir aprendiendo y aportar lo mejor de mí</strong>.",
       badgeRemote: "Preferencia: remoto o híbrido",
       ctaPrimary: "Conóceme",
       ctaSecondary: "Hablemos",
