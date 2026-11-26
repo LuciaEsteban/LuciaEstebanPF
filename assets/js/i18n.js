@@ -74,7 +74,7 @@ window.TRANSLATIONS = {
       },
       professional: {
         title: "What I enjoy most",
-        items: ["Solving problems", "Organizing and presenting data", "Acquiring new skills"],
+        items: ["Solving problems", "Organizing and planning", "Acquiring new skills"],
       },
       additional: {
         title: "Training",
@@ -255,7 +255,7 @@ window.TRANSLATIONS = {
       },
       professional: {
         title: "Lo que más disfruto",
-        items: ["Resolver problemas", "Ordenar y presentar datos", "Adquirir nuevas cualidades"],
+        items: ["Resolver problemas", "Organizar y planificar", "Adquirir nuevas cualidades"],
       },
       additional: {
         title: "Formación",
