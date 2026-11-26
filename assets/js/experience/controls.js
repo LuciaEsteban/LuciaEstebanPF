@@ -2,9 +2,12 @@
  * Experience layer: floating controls (bottom right).
  *
  *   Music player      play/pause, volume and a live equalizer
+ *   Voice control     mute and volume for the spoken welcome message,
+ *                     shown only while that message is playing
  *   Animation switch  turns the seasonal background on or off
  *
- * Both appear once the intro has been closed (XP.Controls.show()).
+ * The music player and the switch appear once the intro has been closed
+ * (XP.Controls.show()).
  */
 (function () {
   "use strict";
@@ -17,6 +20,8 @@
     winter: '<path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M9.5 4.5L12 7l2.5-2.5M9.5 19.5L12 17l2.5 2.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
     spring: '<path d="M12 12c0-4 2-7 5-7 0 3-2 7-5 7zm0 0c0-4-2-7-5-7 0 3 2 7 5 7zm0 0c3 0 6 2 6 5-3 0-6-2-6-5zm0 0c-3 0-6 2-6 5 3 0 6-2 6-5z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>',
     summer: '<circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+    speaker: '<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>',
+    speakerOff: '<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z" fill="currentColor"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>',
     autumn: '<path d="M5 19C5 10 11 5 19 5c0 8-5 14-14 14zm0 0l8-8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
   };
 
@@ -74,6 +79,48 @@
   };
 
   /* ------------------------------------------------------------------ */
+  /* Voice message control (mute + volume, only while it plays)          */
+  /* ------------------------------------------------------------------ */
+  var VoiceDock = {
+    init: function () {
+      var el = (this.el = document.createElement("div"));
+      el.className = "voice-dock";
+      el.innerHTML =
+        '<button type="button" class="voice-btn"></button>' +
+        '<span class="voice-label"></span>' +
+        '<input class="voice-vol" type="range" min="0" max="1" step="0.01" />';
+      document.body.appendChild(el);
+      this.btn = el.querySelector(".voice-btn");
+      this.label = el.querySelector(".voice-label");
+      this.vol = el.querySelector(".voice-vol");
+      this.vol.value = XP.Voice.volume;
+
+      var self = this;
+      this.btn.addEventListener("click", function () { XP.Voice.setMuted(!XP.Voice.muted); });
+      this.vol.addEventListener("input", function () {
+        XP.Voice.setVolume(parseFloat(self.vol.value));
+        if (XP.Voice.muted && XP.Voice.volume > 0) XP.Voice.setMuted(false);
+      });
+      XP.Voice.onChange(function () { self.paint(); });
+      XP.onLanguageChange(function () { self.paint(); });
+      this.paint();
+    },
+
+    paint: function () {
+      var muted = XP.Voice.muted || XP.Voice.volume === 0;
+      this.btn.innerHTML = muted ? ICONS.speakerOff : ICONS.speaker;
+      this.btn.setAttribute("aria-label", muted ? t("voiceUnmute") : t("voiceMute"));
+      this.btn.setAttribute("aria-pressed", muted ? "true" : "false");
+      this.label.textContent = t("voiceLabel");
+      this.vol.setAttribute("aria-label", t("voiceVolume"));
+      if (document.activeElement !== this.vol) this.vol.value = XP.Voice.volume;
+      this.el.classList.toggle("is-muted", muted);
+      // Only while the message is playing.
+      this.el.classList.toggle("is-visible", !!XP.Voice.clip);
+    }
+  };
+
+  /* ------------------------------------------------------------------ */
   /* Seasonal animation switch                                           */
   /* ------------------------------------------------------------------ */
   var SeasonSwitch = {
@@ -109,6 +156,7 @@
   XP.Controls = {
     init: function () {
       Player.init();
+      VoiceDock.init();
       SeasonSwitch.init();
     },
     show: function () {

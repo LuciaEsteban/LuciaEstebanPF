@@ -365,8 +365,23 @@
   /* ------------------------------------------------------------------ */
   XP.Voice = {
     VERSION: 4,   // bump when a recording is replaced, so browsers reload it
-    VOLUME: 0.7,
+    volume: 0.7,  // set from the voice control; the clip follows it live
+    muted: false,
     clip: null,
+    listeners: [],
+
+    onChange: function (fn) { this.listeners.push(fn); },
+    emit: function () { this.listeners.forEach(function (fn) { fn(); }); },
+    setVolume: function (v) {
+      this.volume = v;
+      if (this.clip) this.clip.volume = v;
+      this.emit();
+    },
+    setMuted: function (m) {
+      this.muted = !!m;
+      if (this.clip) this.clip.muted = this.muted;
+      this.emit();
+    },
 
     /* Plays a clip in the current language. Callbacks (all optional):
          onStart(audio)  the clip has started
@@ -376,17 +391,20 @@
       var url = "assets/audio/" + name + "-" + XP.lang() + ".mp3?v=" + this.VERSION;
       this.stop();
       var a = (this.clip = new window.Audio(url));
-      a.volume = this.VOLUME;
+      a.volume = this.volume;
+      a.muted = this.muted;
       var finish = function () {
         if (self.clip !== a) return;
         self.clip = null;
         Music.duck(false);
+        self.emit();
         if (cb.onEnd) cb.onEnd();
       };
       a.addEventListener("ended", finish);
       a.addEventListener("error", finish);
       a.play().then(function () {
         Music.duck(true);
+        self.emit();
         if (cb.onStart) cb.onStart(a);
       }).catch(finish);
     },
@@ -396,6 +414,7 @@
       this.clip.pause();
       this.clip = null;
       Music.duck(false);
+      this.emit();
     }
   };
 })();
