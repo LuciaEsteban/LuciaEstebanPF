@@ -38,6 +38,7 @@
       '<button type="button" class="voice-cc-icon"></button>' +
       '<span class="voice-cc-name"></span>' +
       '<span class="voice-cc-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>' +
+      '<button type="button" class="voice-cc-close"></button>' +
       "</div>" +
       '<p class="voice-cc-prev"></p>' +
       '<p class="voice-cc-now"></p>';
@@ -52,8 +53,15 @@
       muteBtn.setAttribute("aria-pressed", muted ? "true" : "false");
       muteBtn.setAttribute("aria-label", muted ? t("voiceUnmute") : t("voiceMute"));
       muteBtn.title = muted ? t("voiceUnmute") : t("voiceMute");
+      closeBtn.setAttribute("aria-label", t("voiceClose"));
+      closeBtn.title = t("voiceClose");
     }
     muteBtn.addEventListener("click", function () { XP.Voice.setMuted(!XP.Voice.muted); });
+
+    // The red X stops everything: voice, captions and the guided tour.
+    var closeBtn = box.querySelector(".voice-cc-close");
+    closeBtn.innerHTML =
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/></svg>';
     XP.Voice.onChange(paintMute);
     XP.onLanguageChange(paintMute);
     paintMute();
@@ -116,7 +124,8 @@
     }
     window.addEventListener("resize", place);
 
-    return {
+    var api = {
+      onDismiss: null,
       open: function () {
         place();
         cues = t("openingCues");
@@ -145,6 +154,8 @@
         }, delay);
       }
     };
+    closeBtn.addEventListener("click", function () { if (api.onDismiss) api.onDismiss(); });
+    return api;
   }
 
   /* ------------------------------------------------------------------ */
@@ -272,12 +283,25 @@
         frame.classList.remove("has-listen");
         popBubble();
         captions.open();
-        var started = false;
+        var started = false, dismissed = false;
         var tour = Tour(t("openingTour"), function () { captions.float(); });
+        // Red X: stop the voice, end the tour (back to the top) and close the captions.
+        captions.onDismiss = function () {
+          if (dismissed) return;
+          dismissed = true;
+          XP.Voice.stop();
+          tour.finish();
+          captions.close(0);
+        };
         setTimeout(function () {
+          if (dismissed) return;
           XP.Voice.play("opening", {
-            onStart: function (audio) { started = true; captions.follow(audio, tour); },
+            onStart: function (audio) {
+              if (dismissed) { XP.Voice.stop(); return; }
+              started = true; captions.follow(audio, tour);
+            },
             onEnd: function () {
+              if (dismissed) return;
               tour.finish(); // back to the top
               // Leave the last words on screen for a moment; close at once if it never played.
               captions.close(started ? 2500 : 0);
