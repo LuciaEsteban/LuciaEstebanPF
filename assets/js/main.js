@@ -37,7 +37,9 @@
       /* localStorage may be unavailable (private mode, blocked storage) — default to English */
     }
     if (stored === "en" || stored === "es") return stored;
-    return "en";
+    // No saved choice: use the language detected from the browser (set on <html> by index.html).
+    var detected = document.documentElement.getAttribute("lang");
+    return detected === "es" ? "es" : "en";
   }
 
   function setLang(lang) {
